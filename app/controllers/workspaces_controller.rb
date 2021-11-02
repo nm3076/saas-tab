@@ -32,8 +32,8 @@ class WorkspacesController < ApplicationController
     end
 
     def add_link_to_workspace
-        # puts "server got: "
-        # puts request.body.read
+        puts "server got: "
+        puts request.body.read
         workspace_id = params[:id]
         workspace = Workspace.find(workspace_id)
         @new_link = Link.create!(:workspace_name => workspace.workspace_name, :link => params[:_json], :workspace_id => workspace.id)
