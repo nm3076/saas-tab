@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_11_02_050410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "links", force: :cascade do |t|
+    t.string "workspace_name"
+    t.string "link"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "workspace_id"
+    t.index ["workspace_id"], name: "index_links_on_workspace_id"
+  end
+
+  create_table "workspaces", force: :cascade do |t|
+    t.string "workspace_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "links", "workspaces"
 end
