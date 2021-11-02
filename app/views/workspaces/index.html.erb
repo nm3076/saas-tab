@@ -13,9 +13,11 @@
     <% @workspaces.each do |workspace| %>
       <tr>
         <td>
-          <%= workspace.workspace_name %>
+          <%= link_to "#{workspace.workspace_name}", workspace_path(workspace) %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<button type="button"> <%= link_to 'Add new workspace', new_workspace_path %> </button>
