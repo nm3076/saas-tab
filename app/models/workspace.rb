@@ -1,3 +1,3 @@
 class Workspace < ApplicationRecord
-    has_many :link
+    has_many :links
 end
