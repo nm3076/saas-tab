@@ -15,9 +15,10 @@ addLinkButton.addEventListener("click", function(){
     addButton.appendChild(addButtonText);
 
     addButton.addEventListener("click", function(){
-        let url_path = "http://localhost:3000/add_link_to_workspace/" + String(workspaceID);
+        let url_path = "http://" + String(window.location.host) + "/add_link_to_workspace/" + String(workspaceID);
         let linkToAdd = String(inputLinkBox.value); 
         console.log("adding url: ", linkToAdd); 
+        console.log('hostname: ',window.location.host );
 
         let settings = {
             method: "POST",
