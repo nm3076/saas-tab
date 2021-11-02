@@ -1,0 +1,9 @@
+<h2>Create New Workspace</h2>
+
+<%= form_tag workspaces_path, :class => 'form' do %>
+    <%= label :workspace, :workspace_name, 'Name' %>
+    <%= text_field :workspace, :workspace_name %>
+    <br/>
+    <%= submit_tag 'Add New Workspace' %>
+    <%= link_to 'Back to Dashboard', workspaces_path %>
+<% end %>
