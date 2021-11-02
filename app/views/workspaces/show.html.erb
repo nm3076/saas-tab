@@ -18,3 +18,8 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="row">
+  <%= link_to 'Delete', workspace_path(@workspace), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
+  <%= link_to 'Back to workspace dashboard', workspaces_path, :class => 'btn btn-primary col-2' %>
+</div>

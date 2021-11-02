@@ -22,4 +22,11 @@ class WorkspacesController < ApplicationController
         @workspace = Workspace.find(id)
         @links = Link.where(workspace_id: @workspace.id)
     end
+
+    def destroy
+        @workspace = Workspace.find(params[:id])
+        @workspace.destroy
+        flash[:notice] = "Workspace '#{@workspace.workspace_name}' deleted."
+        redirect_to workspaces_path
+      end
 end
