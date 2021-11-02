@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root :to => 'workspaces#index'
 
   resources :workspaces
+  delete 'delete_link_from_workspace/:id', to: 'workspaces#delete_link_from_workspace', as: 'delete_link_from_workspace'
+
 end

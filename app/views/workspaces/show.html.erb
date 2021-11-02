@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th>Link</th>
-      <th> <button id="add-link-to-workspace" class="btn btn-primary"> Add Link </th> 
+      <th> <%= link_to 'Add Link', workspaces_path, :class => 'btn btn-primary col-2' %> </th> 
     </tr>
   </thead>
   <tbody>
@@ -16,7 +16,9 @@
         <td>
           <%= l.link %>
         </td>
-            
+        <td>
+        <%= link_to 'Delete Link', delete_link_from_workspace_path(l.id), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
+        </td>  
       </tr>
     <% end %>
   </tbody>

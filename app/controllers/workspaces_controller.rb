@@ -33,11 +33,21 @@ class WorkspacesController < ApplicationController
     def add_link_to_workspace
         id = params[:id]
         @workspace = Workspace.find(id)
-        
+    end
 
+    def delete_link_from_workspace
+        id = params[:id]
+        link_to_delete = Link.find(id)
+        belongs_to_workspace = link_to_delete.workspace_id
+        link_to_delete.destroy
+        flash[:notice] = "Link deleted from '#{belongs_to_workspace.workspace_name}' deleted."
+        redirect_to workspace_path(belongs_to_workspace)
     end
 
 
-
+    # private 
+    # def link_params
+    #     params.require(:link).permit(:id, :rating, :description, :release_date, :director)
+    # end
 
 end
