@@ -39,6 +39,8 @@ class WorkspacesController < ApplicationController
         id = params[:id]
         link_to_delete = Link.find(id)
         belongs_to_workspace = link_to_delete.workspace_id
+        belongs_to_workspace = Workspace.find(belongs_to_workspace)
+        
         link_to_delete.destroy
         flash[:notice] = "Link deleted from '#{belongs_to_workspace.workspace_name}' deleted."
         redirect_to workspace_path(belongs_to_workspace)
