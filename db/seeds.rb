@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#workspaces = [{ :workspace_name => 'SaaS' }, { :workspace_name => 'MBC' }]
+workspaces = [{ :workspace_name => 'SaaS' }, { :workspace_name => 'MBC' }]
 
-#workspaces.each do |workspace|
-#    Workspace.create!(workspace)
-#end
+workspaces.each do |workspace|
+    Workspace.create!(workspace)
+end
 
 links = [{ :workspace_name => 'SaaS', :link => 'google.com' }, { :workspace_name => 'MBC', :link => 'meta.com' }, { :workspace_name => 'MBC', :link => 'facebook.com' }]
 
