@@ -17,7 +17,7 @@ workspaces.each do |workspace|
 end
 
 workspaces.each_with_index do |obj, index|
-    Link.create!([{:workspace_name => 'class #{index}', :link => 'google.com', :workspace_id => obj.id }])
+    Link.create!([{:workspace_name => 'class #{index}', :link => 'google.com'}])
 end
 
 #links = [{ :workspace_name => 'SaaS', :link => 'google.com' }, { :workspace_name => 'MBC', :link => 'meta.com' }, { :workspace_name => 'MBC', :link => 'facebook.com' }]
