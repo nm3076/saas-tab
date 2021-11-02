@@ -1,3 +1,3 @@
 class Workspace < ApplicationRecord
-    has_many :links, :inverse_of => :workspace, foreign_key: :workspace_name
+    has_many :links, foreign_key: :workspace_name
 end
