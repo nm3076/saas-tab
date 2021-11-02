@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-workspaces = Workspace.create([{ workspace_name: 'SaaS' }, { workspace_name: 'MBC' }])
+workspaces = [{ :workspace_name => 'SaaS' }, { :workspace_name => 'MBC' }]
 
 workspaces.each do |workspace|
     Workspace.create!(workspace)
