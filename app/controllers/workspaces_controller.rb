@@ -7,5 +7,6 @@ class WorkspacesController < ApplicationController
     def show
         id = params[:id]
         @workspace = Workspace.find(id)
+        @links = Link.all
     end
 end
