@@ -1,4 +1,5 @@
 class WorkspacesController < ApplicationController
+    protect_from_forgery with: :null_session
     def index
         @workspaces = Workspace.all
     end
@@ -31,8 +32,14 @@ class WorkspacesController < ApplicationController
     end
 
     def add_link_to_workspace
-        id = params[:id]
-        @workspace = Workspace.find(id)
+        # puts "server got: "
+        # puts request.body.read
+        workspace_id = params[:id]
+        workspace = Workspace.find(workspace_id)
+        @new_link = Link.create!(:workspace_name => workspace.workspace_name, :link => params[:_json], :workspace_id => workspace.id)
+
+        redirect_to workspace_path(workspace_id)
+        return 
     end
 
     def delete_link_from_workspace
@@ -47,9 +54,5 @@ class WorkspacesController < ApplicationController
     end
 
 
-    # private 
-    # def link_params
-    #     params.require(:link).permit(:id, :rating, :description, :release_date, :director)
-    # end
 
 end
