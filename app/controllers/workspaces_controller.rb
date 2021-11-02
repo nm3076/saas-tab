@@ -9,7 +9,6 @@ class WorkspacesController < ApplicationController
 
     def create
         @workspace = Workspace.create!(workspace_params)
-        flash[:notice] = "#{@workspace.workspace_name} was successfully created!"
         redirect_to workspaces_path
     end
 
