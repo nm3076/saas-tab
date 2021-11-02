@@ -2,3 +2,19 @@
 
 <h2>Links at <em><%= @workspace.workspace_name %></em></h2>
 
+<table>
+  <thead>
+    <tr>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @links.each do |l| %>
+      <tr>
+        <td>
+          <%= l.link %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
