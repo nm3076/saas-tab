@@ -1,0 +1,9 @@
+<h2>Create New Workspace</h2>
+
+<%= form_tag movies_path do %>
+    <%= label :workspace, :workspace_name, 'Workspace Name' %>
+    <%= text_field :workspace, :workspace_name %>
+    <br/>
+    <%= submit_tag 'Add Workspace Now' %>
+    <%= link_to 'Back to Home', workspaces_path %>
+  <% end %>
