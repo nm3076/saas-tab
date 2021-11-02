@@ -8,6 +8,8 @@
 Workspace.destroy_all
 Link.destroy_all
 
+Workspace.connection
+
 workspaces = [{ :workspace_name => 'SaaS' }, { :workspace_name => 'MBC' }]
 
 workspaces.each do |workspace|
