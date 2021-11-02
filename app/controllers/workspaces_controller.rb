@@ -14,7 +14,7 @@ class WorkspacesController < ApplicationController
 
     def workspace_params
         params.require(:workspace).permit(:workspace_name)
-        @links = Link.all
+        # @links = Link.all
     end
 
     def show
