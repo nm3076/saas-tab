@@ -26,9 +26,9 @@
 #     Link.create!(l)
 # end
 
-workspace = Workspace.create!(workspace_name: "SaaS")
-Link.create!(workspace_name: workspace.workspace_name, link: 'google.com', workspace_id: workspace.id)
+workspace = Workspace.create!(:workspace_name=> "SaaS")
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'google.com', :workspace_id => workspace.id)
 
-workspace = Workspace.create!(workspace_name: "MBC")
-Link.create!(workspace_name: workspace.workspace_name, link: 'facebook.com', workspace_id: workspace.id)
-Link.create!(workspace_name: workspace.workspace_name, link: 'meta.com', workspace_id: workspace.id)
+workspace = Workspace.create!(:workspace_name => "MBC")
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'facebook.com', :workspace_id => workspace.id)
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'meta.com', :workspace_id => workspace.id)
