@@ -11,3 +11,9 @@ workspaces = [{ :workspace_name => 'SaaS' }, { :workspace_name => 'MBC' }]
 workspaces.each do |workspace|
     Workspace.create!(workspace)
 end
+
+#links = [{ :workspace_name => 'SaaS', :link => 'google.com' }, { :workspace_name => 'MBC', :link => 'meta.com' }, { :workspace_name => 'MBC', :link => 'facebook.com' }]
+
+#links.each do |l|
+#    Link.create!(l)
+#end
