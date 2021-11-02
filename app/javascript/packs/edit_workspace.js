@@ -14,10 +14,13 @@ addLinkButton.addEventListener("click", function(){
     let addButtonText = document.createTextNode("Add Current Link"); 
     addButton.appendChild(addButtonText);
 
-    addButton.addEventListener("click", function(){
-        let url_path = "http://" + String(window.location.host) + "/add_link_to_workspace/" + String(workspaceID);
+    addButton.addEventListener("click", async function(){
+        let protocol = window.location.protocol; 
+
+        let url_path = String(protocol) + "//" + String(window.location.host) + "/add_link_to_workspace/" + String(workspaceID);
         let linkToAdd = String(inputLinkBox.value); 
         console.log("adding url: ", linkToAdd); 
+        console.log("protocol: ", protocol); 
         console.log('hostname: ',window.location.host );
 
         let settings = {
@@ -28,8 +31,9 @@ addLinkButton.addEventListener("click", function(){
             body: JSON.stringify(linkToAdd)
         }
         
-        fetch(url_path, settings); 
+        await fetch(url_path, settings);
         
+        window.location = String(protocol) + "//" + String(window.location.host) + "/workspaces/" + String(workspaceID);
     }); 
 
     let inputWrapper = document.createElement("td");
