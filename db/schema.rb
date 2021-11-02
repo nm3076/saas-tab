@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2021_11_02_050410) do
     t.string "link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "workspace_id"
-  #  t.index ["workspace_id"], name: "index_links_on_workspace_id"
+    t.bigint "workspace_id"
+    t.index ["workspace_id"], name: "index_links_on_workspace_id"
   end
 
   create_table "workspaces", force: :cascade do |t|
@@ -30,5 +30,5 @@ ActiveRecord::Schema.define(version: 2021_11_02_050410) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  # add_foreign_key "links", "workspaces"
+  add_foreign_key "links", "workspaces"
 end
