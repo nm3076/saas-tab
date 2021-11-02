@@ -1,6 +1,7 @@
 class WorkspacesController < ApplicationController
     def index
         @workspaces = Workspace.all
+        @links = Link.all
     end
 
     def show
