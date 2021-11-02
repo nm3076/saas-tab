@@ -28,5 +28,16 @@ class WorkspacesController < ApplicationController
         @workspace.destroy
         flash[:notice] = "Workspace '#{@workspace.workspace_name}' deleted."
         redirect_to workspaces_path
-      end
+    end
+
+    def add_link_to_workspace
+        id = params[:id]
+        @workspace = Workspace.find(id)
+        
+
+    end
+
+
+
+
 end
