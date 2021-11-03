@@ -22,12 +22,12 @@ addLinkButton.addEventListener("click", function(){
         
         let https = "https://www.";
         let http = "http://www.";
-        let http = "http://";
-        let http = "https://";
+        let http2 = "http://";
+        let https2 = "https://";
 
-        if( !linkToAdd.includes(http) && !linkToAdd.includes(https) ){
+        if( !linkToAdd.includes(http) && !linkToAdd.includes(https) && !linkToAdd.includes(https2) && !linkToAdd.includes(http2)){
             alert("Invalid link! Cannot add this to your workspace." +
-                  "Please make sure your link includes 'https://www.', " +
+                  "Please make sure your link is valid and includes 'https://www.', " +
                   "'http://www.', 'http://', or 'https://'!"); 
             return 
         }
