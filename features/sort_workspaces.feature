@@ -43,3 +43,11 @@ Scenario: go to specific workspace and see all associated links
   And I should see the "https://meta.com/" link
   And I should not see the "https://messenger.com/" link
   And I should not see the "https://calendar.google.com/" link
+
+Scenario: delete specific workspace from database
+  Given I am on the workspace page for "SaaS"
+  And I should see the "https://www.google.com" link
+  When I follow "Delete"
+  Then I should be on the home page
+  And I should not see "SaaS"
+

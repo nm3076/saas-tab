@@ -33,8 +33,3 @@ Then /I should not see the "(.*)" link/ do |l|
   # Make sure that you see the relevant links for a workspace
   !expect(page.body) =~ l
 end
-
-Then /the director of "(.*)" should be "(.*)"/ do |movie, director|
-    selected_movie = Movie.find_by(title: movie)
-    expect(selected_movie.director).to eq(director)    
-end
