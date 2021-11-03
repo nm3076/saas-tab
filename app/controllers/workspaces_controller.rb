@@ -54,6 +54,8 @@ class WorkspacesController < ApplicationController
     end
 
     def open_links
+        puts "server got: "
+        puts request.body.read
         id = params[:id]
         @workspace = Workspace.find(id)
         @links = Link.where(workspace_id: @workspace.id) 
