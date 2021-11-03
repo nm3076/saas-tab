@@ -2,6 +2,8 @@
 
 <h2>Links at <em><%= @workspace.workspace_name %> </em></h2>
 
+<button id="click-to-open" value=<%= @workspace.id %> > Open All </button> 
+
 <table >
   <thead>
     <tr>
@@ -16,7 +18,7 @@
           <%= l.link %>
         </td>
         <td>
-        <%= link_to 'Delete Link', delete_link_from_workspace_path(l.id), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
+        <%= link_to 'Delete Link', delete_link_from_workspace_path(l.id), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?' %>
         </td>  
       </tr>
     <% end %>
@@ -29,3 +31,7 @@
 </div>
 
 <%= javascript_pack_tag 'edit_workspace' %>
+<%= javascript_pack_tag 'open_all' %>
+
+
+

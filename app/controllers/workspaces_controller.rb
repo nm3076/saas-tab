@@ -53,6 +53,17 @@ class WorkspacesController < ApplicationController
         redirect_to workspace_path(belongs_to_workspace)
     end
 
-
-
+    def open_links
+        puts "RECEIVED REQUEST: "
+        puts request.body
+        
+        id = params[:id]
+        @workspace = Workspace.find(id)
+        @links = Link.where(workspace_id: @workspace.id) 
+        puts "SENDING JSON DATA to browser"
+        render status: 200, json: @links
+        return 
+        puts "after rendering..........."
+    end
+     
 end
