@@ -13,7 +13,7 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
+    when /^the (tab)?home\s?page$/ then '/workspaces'
       
     when /^the edit page for "(.*)"/ then
       movie = Movie.find_by(title: $1)
