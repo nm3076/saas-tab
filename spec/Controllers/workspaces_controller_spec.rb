@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe WorkspacesController, type: :controller do
-    describe "GET index" do
-      it “returns a successful response to the index page” do
+    describe "GET #index" do
+      it "returns a successful response" do
         get :index
         expect(response).to be_successful
       end
