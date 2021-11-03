@@ -7,6 +7,16 @@
 To access our application:
 https://secure-mesa-61460.herokuapp.com/
 
+### Database
+To popualate the database: 
+rails db:seed
+
+### Testing 
+#### Testing with RSpec
+To test with rspec run: bundle exec rspec
+To test with cucumber run: cucumber -s
+A complete report on the coverage for these tests is located in the coverage directory. 
+
 ### Group Members
 
 * Richard Lopez - rl3020
