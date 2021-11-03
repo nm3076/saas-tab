@@ -53,6 +53,11 @@ class WorkspacesController < ApplicationController
         redirect_to workspace_path(belongs_to_workspace)
     end
 
-
-
+    def open_links
+        id = params[:id]
+        @workspace = Workspace.find(id)
+        @links = Link.where(workspace_id: @workspace.id) 
+        render json: @links
+    end
+     
 end
