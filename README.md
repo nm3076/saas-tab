@@ -7,7 +7,7 @@
 To access our application:
 https://secure-mesa-61460.herokuapp.com/
 
-### Database
+### Database Initialization
 To populate the database: 
 
 `rails db:seed`
