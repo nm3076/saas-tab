@@ -10,25 +10,17 @@
 
 # # Workspace.connection
 
-# workspaces = [{ :workspace_name => 'SaaS' }, { :workspace_name => 'MBC' }]
-
-# workspaces.each do |workspace|
-#     Workspace.create!(workspace)
-# end
-
-# #workspaces.each_with_index do |obj, index|
-# #    Link.create!([{:workspace_name => 'class #{index}', :link => 'google.com', :workspace_id => obj.id }])
-# #end
-
-# links = [{ :workspace_name => 'SaaS', :link => 'google.com' }, { :workspace_name => 'MBC', :link => 'meta.com' }, { :workspace_name => 'MBC', :link => 'facebook.com' }]
-
-# links.each do |l|
-#     Link.create!(l)
-# end
-
 workspace = Workspace.create!(:workspace_name=> "SaaS")
-Link.create!(:workspace_name => workspace.workspace_name, :link => 'google.com', :workspace_id => workspace.id)
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://tesla.com/', :workspace_id => workspace.id)
 
 workspace = Workspace.create!(:workspace_name => "MBC")
-Link.create!(:workspace_name => workspace.workspace_name, :link => 'facebook.com', :workspace_id => workspace.id)
-Link.create!(:workspace_name => workspace.workspace_name, :link => 'meta.com', :workspace_id => workspace.id)
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://facebook.com/', :workspace_id => workspace.id)
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://meta.com/', :workspace_id => workspace.id)
+
+workspace = Workspace.create!(:workspace_name => "Research")
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://messenger.com/', :workspace_id => workspace.id)
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://gmail.com/', :workspace_id => workspace.id)
+
+workspace = Workspace.create!(:workspace_name => "TA")
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://calendar.google.com/', :workspace_id => workspace.id)
+Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://tesla.com/', :workspace_id => workspace.id)
