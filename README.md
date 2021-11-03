@@ -17,6 +17,7 @@ To populate the database:
 To test with rspec run: `bundle exec rspec`
 ### Testing with Cucumber
 To test with cucumber run: `cucumber -s`
+
 A complete report on the coverage of code for these tests is located in the coverage directory. 
 
 ### Group Members
