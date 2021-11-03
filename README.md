@@ -11,6 +11,7 @@ https://secure-mesa-61460.herokuapp.com/
 To populate the database: 
 
 `rake db:migrate`
+
 `rails db:seed`
 
 ### Running the Test Suite
