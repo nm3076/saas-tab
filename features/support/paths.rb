@@ -14,14 +14,17 @@ module NavigationHelpers
     case page_name
 
     when /^the (tab)?home\s?page$/ then '/workspaces'
-      
+
+    when /^the Create New Workspace page$/ then 
+      '/workspaces/new'      
+
     when /^the edit page for "(.*)"/ then
       movie = Movie.find_by(title: $1)
       edit_movie_path(movie.id) 
    
-    when /^the details page for "(.*)"/ then
-      movie = Movie.find_by(title: $1)
-      movie_path(movie)   
+    when /^the workspace page for "(.*)"/ then
+      workspace = Workspace.find_by(workspace_name: $1)
+      workspace_path(workspace.id)   
       
     when /^the Similar Movies page for "(.*)"/ then
       movie = Movie.find_by(title: $1)
