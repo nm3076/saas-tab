@@ -16,7 +16,6 @@ RSpec.describe WorkspacesController, type: :controller do
 
     end
 
-
     #test get new view
     describe "GET #new" do
       it "returns a successful response" do
@@ -155,6 +154,4 @@ RSpec.describe WorkspacesController, type: :controller do
 
       end
     end
-    
-
 end
