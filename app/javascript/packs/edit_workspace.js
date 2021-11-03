@@ -19,6 +19,18 @@ addLinkButton.addEventListener("click", function(){
 
         let url_path = String(protocol) + "//" + String(window.location.host) + "/add_link_to_workspace/" + String(workspaceID);
         let linkToAdd = String(inputLinkBox.value); 
+        
+        let https = "https://www.";
+        let http = "http://www.";
+
+        if( !linkToAdd.includes(http) && !linkToAdd.includes(https) ){
+            alert("Invalid link! Cannot add this to your workspace." +
+                  "Please make sure your link includes 'https://www.' or" +
+                  "'http://www.'"); 
+            return 
+        }
+        
+
         console.log("adding url: ", linkToAdd); 
         console.log("protocol: ", protocol); 
         console.log('hostname: ',window.location.host );

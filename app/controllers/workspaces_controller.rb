@@ -54,12 +54,16 @@ class WorkspacesController < ApplicationController
     end
 
     def open_links
-        puts "server got: "
-        puts request.body.read
+        puts "RECEIVED REQUEST: "
+        puts request.body
+        
         id = params[:id]
         @workspace = Workspace.find(id)
         @links = Link.where(workspace_id: @workspace.id) 
-        render json: @links
+        puts "SENDING JSON DATA to browser"
+        render status: 200, json: @links
+        return 
+        puts "after rendering..........."
     end
      
 end

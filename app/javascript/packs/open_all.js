@@ -1,10 +1,21 @@
+
+
 var openAllButton = document.getElementById("click-to-open"); 
-console.log(openAllButton);
 openAllButton.addEventListener("click", async function(){
-    console.log(window.location);
+
+    let openLink = function(link){ 
+        window.open(link); 
+        console.log("opened link, ", link);
+    };
+
+    console.log("OPEN ALL BUTTON CLICKED!"); 
     let protocol = window.location.protocol; 
-    console.log('hello!')
-    let host_url = String(protocol) + '//' + String(window.location.host) + '/open_links/'; 
+
+    let workspaceID = openAllButton.value; 
+
+
+    let host_url = String(protocol) + '//' + String(window.location.host) + '/open_links/' + String(workspaceID);
+    console.log("host url: ", host_url);  
     let settings = {
         method: 'GET',
         headers:  {
@@ -15,12 +26,15 @@ openAllButton.addEventListener("click", async function(){
     console.log('in open-all')
     let response = await fetch(host_url, settings); 
     let links = await response.json(); 
-                        
-    console.log(links, "-> links: ", links.length); 
+    console.log("Response from server: ", links);                     
+    
     for(let i = 0; i < links.length ; i++ ){ 
-        window.open(links[i], '_blank'); 
-        console.log("opening link, ", links[i]);
+        let curr_link = links[i]["link"]; 
+        console.log("opening link, ", curr_link);
+        openLink(curr_link); 
     }
 
 }); 
+
+
 

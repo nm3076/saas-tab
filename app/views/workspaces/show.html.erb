@@ -2,7 +2,7 @@
 
 <h2>Links at <em><%= @workspace.workspace_name %> </em></h2>
 
-<button id="click-to-open"> Open All </button> 
+<button id="click-to-open" value=<%= @workspace.id %> > Open All </button> 
 
 <table >
   <thead>
@@ -32,3 +32,6 @@
 
 <%= javascript_pack_tag 'edit_workspace' %>
 <%= javascript_pack_tag 'open_all' %>
+
+
+
