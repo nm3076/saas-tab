@@ -63,7 +63,6 @@ class WorkspacesController < ApplicationController
         puts "SENDING JSON DATA to browser"
         render status: 200, json: @links
         return 
-        puts "after rendering..........."
     end
      
 end
