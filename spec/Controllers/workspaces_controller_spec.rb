@@ -113,8 +113,45 @@ RSpec.describe WorkspacesController, type: :controller do
       end
     end
 
+    # remove link from workspace test
+    describe "destroy link in workspace" do
+      it "removes link from a workspace" do
+        post :create, params: {:workspace => {:workspace_name => "PLT" }}
+        @all_workspaces = Workspace.all
+        @made_workspace = Workspace.find_by(:workspace_name => "PLT")
+        workspace_id = @made_workspace.id
+
+        post :add_link_to_workspace, params: { :id => workspace_id, :_json =>"https://www.awesomeinventions.com" }
+        @all_links = Link.all
+        @created_link = Link.find_by(:link => "https://www.awesomeinventions.com")
+        Link.find_by(:link => "https://www.awesomeinventions.com").destroy
+
+        expect(@all_links).to_not include( @created_link )
+      
+        Workspace.find_by(:workspace_name => "PLT").destroy
+
+      end
+    end
+
+    # open links from workspaces
+    describe "open all links in workspace" do
+      it "open all link from a workspace" do
+        post :create, params: {:workspace => {:workspace_name => "PLT" }}
+        @made_workspace = Workspace.find_by(:workspace_name => "PLT")
+        workspace_id = @made_workspace.id
+
+        post :add_link_to_workspace, params: { :id => workspace_id, :_json =>"https://www.awesomeinventions.com" }
+
+        post :open_links, params: { :id => workspace_id }
+
+        expect(response).to be_successful
 
 
+        Link.find_by(:link => "https://www.awesomeinventions.com").destroy
+        Workspace.find_by(:workspace_name => "PLT").destroy
+
+      end
+    end
     
 
 end
