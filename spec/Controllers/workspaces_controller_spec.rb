@@ -125,6 +125,9 @@ RSpec.describe WorkspacesController, type: :controller do
         @all_links = Link.all
         @created_link = Link.find_by(:link => "https://www.awesomeinventions.com")
         Link.find_by(:link => "https://www.awesomeinventions.com").destroy
+        
+        #puts flash[:notice]
+       # expect(flash[:notice]).to match(/Link deleted from PLT deleted./)
 
         expect(@all_links).to_not include( @created_link )
       
