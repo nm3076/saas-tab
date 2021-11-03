@@ -1,19 +1,23 @@
 <!--  app/views/workspaces/show.html.erb -->
 
-<h2>Links at <em><%= @workspace.workspace_name %></em></h2>
+<h2>Links at <em><%= @workspace.workspace_name %> </em></h2>
 
-<table>
+<table >
   <thead>
     <tr>
       <th>Link</th>
+      <th> <button id="add-link-to-workspace" value=<%= @workspace.id %>> Add Link </button> </th> 
     </tr>
   </thead>
-  <tbody>
+  <tbody id="link-list">
     <% @links.each do |l| %>
       <tr>
         <td>
           <%= l.link %>
         </td>
+        <td>
+        <%= link_to 'Delete Link', delete_link_from_workspace_path(l.id), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
+        </td>  
       </tr>
     <% end %>
   </tbody>
@@ -23,3 +27,5 @@
   <%= link_to 'Delete', workspace_path(@workspace), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
   <%= link_to 'Back to workspace dashboard', workspaces_path, :class => 'btn btn-primary col-2' %>
 </div>
+
+<%= javascript_pack_tag 'edit_workspace' %>
