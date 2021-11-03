@@ -8,7 +8,7 @@ To access our application:
 https://secure-mesa-61460.herokuapp.com/
 
 ### Database Initialization
-To populate the database: 
+To populate the database run: 
 
 `rake db:migrate`
 
