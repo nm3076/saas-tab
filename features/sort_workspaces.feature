@@ -51,3 +51,18 @@ Scenario: delete specific workspace from database
   Then I should be on the home page
   And I should not see "SaaS"
 
+Scenario: return to dashboard from specific workspace
+  Given I am on the workspace page for "SaaS"
+  When I follow "Back to workspace dashboard"
+  Then I should be on the home page
+
+Scenario: add link to specific workspace
+  Given I am on the workspace page for "SaaS"
+  And I should see the "https://www.google.com" link
+  When I press "Add Link"
+  Then I should be on the workspace page for "SaaS"
+
+Scenario: delete link from specific workspace
+  Given I am on the workspace page for "MBC"
+  Then I should see the "https://facebook.com/" link
+  And I should see the "https://meta.com/" link
