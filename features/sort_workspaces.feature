@@ -61,7 +61,8 @@ Scenario: add link to specific workspace
   And I should see the "https://www.google.com" link
   When I press "Add Link"
   Then I should be on the workspace page for "SaaS"
-
+  
+  
 Scenario: delete link from specific workspace
   Given I am on the workspace page for "MBC"
   Then I should see the "https://facebook.com/" link

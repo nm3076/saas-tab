@@ -6,9 +6,10 @@
 
 # ENV['RAILS_ENV'] = test
 
-require 'cucumber/rails'
+
 require 'simplecov'
-SimpleCov.start
+#SimpleCov.start
+require 'cucumber/rails'
 
 # frozen_string_literal: true
 

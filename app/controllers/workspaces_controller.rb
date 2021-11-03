@@ -26,12 +26,23 @@ class WorkspacesController < ApplicationController
 
     def destroy
         @workspace = Workspace.find(params[:id])
+        @all_links = Link.where(workspace_id: @workspace.id)
+
+        puts "all links"
+        puts @all_links
+        
+        @all_links.each do | l |
+            Link.find_by(id: l.id).destroy
+        end 
+
         @workspace.destroy
         flash[:notice] = "Workspace '#{@workspace.workspace_name}' deleted."
         redirect_to workspaces_path
     end
 
     def add_link_to_workspace
+        puts "server got: "
+        puts request.body.read
         workspace_id = params[:id]
         workspace = Workspace.find(workspace_id)
         @new_link = Link.create!(:workspace_name => workspace.workspace_name, :link => params[:_json], :workspace_id => workspace.id)
@@ -52,10 +63,13 @@ class WorkspacesController < ApplicationController
     end
 
     def open_links
+        puts "RECEIVED REQUEST: "
+        puts request.body
+        
         id = params[:id]
         @workspace = Workspace.find(id)
         @links = Link.where(workspace_id: @workspace.id) 
-        
+        puts "SENDING JSON DATA to browser"
         render status: 200, json: @links
         return 
     end
