@@ -11,11 +11,12 @@ https://secure-mesa-61460.herokuapp.com/
 To popualate the database: 
 rails db:seed
 
-### Testing 
+### Running the Test Suite
 #### Testing with RSpec
-To test with rspec run: bundle exec rspec
-To test with cucumber run: cucumber -s
-A complete report on the coverage for these tests is located in the coverage directory. 
+To test with rspec run: `bundle exec rspec`
+### Testing with Cucumber
+To test with cucumber run: `cucumber -s`
+A complete report on the coverage of code for these tests is located in the coverage directory. 
 
 ### Group Members
 
