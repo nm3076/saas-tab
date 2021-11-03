@@ -2,10 +2,10 @@
 
 ### Group Members
 
-Richard Lopez - rl3020
-Naviya Makhija - nm3076
-Jessica Peng - jp3864
-Karen Shi - ks3650
+* Richard Lopez - rl3020
+* Naviya Makhija - nm3076
+* Jessica Peng - jp3864
+* Karen Shi - ks3650
 
 Things you may want to cover:
 
