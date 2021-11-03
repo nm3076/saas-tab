@@ -8,8 +8,9 @@ To access our application:
 https://secure-mesa-61460.herokuapp.com/
 
 ### Database
-To popualate the database: 
-rails db:seed
+To populate the database: 
+
+`rails db:seed`
 
 ### Running the Test Suite
 #### Testing with RSpec
