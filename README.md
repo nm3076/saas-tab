@@ -5,7 +5,7 @@
 **Link to Github repo**: https://github.com/nm3076/saas-tab.git <br />
 **Heroku link**: https://secure-mesa-61460.herokuapp.com/
 
-### Summary of app's iteration 1 features
+### Summary of Iteration 1 features
 - Dashboard to view all existing workspaces
 - Add new workspace
 - Delete existing workspace
@@ -26,7 +26,7 @@
 3.  `rails server` (launch web server locally)
 4.  open `http://127.0.0.1:3000` or `http://[::1]:3000` on a web browser
 
-## Running the Test Suite
+## Running the test suite
 #### Testing with RSpec
 Run `bundle exec rspec`
 #### Testing with Cucumber
@@ -34,7 +34,7 @@ Run `rake cucumber`
 #### View complete coverage report
 Run `open coverage/index.html` 
 
-## Group Members
+## Group members
 * Richard Lopez - rl3020
 * Naviya Makhija - nm3076
 * Jessica Peng - jp3864
