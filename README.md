@@ -17,11 +17,11 @@
 #### On running the program
 - Please disable any ad blockers on your web browser before clicking on `Open All` in the specific workspace to open all associated links
 - Please enter valid links that start with `https://www.`, `http://www.`, `http://`, or `https://` when adding new links
-#### On testing the program**
+#### On testing the program
 - The RSpec and Cucumber tests cover all models, views, and controllers - any % that may not be covered falls under JS (for adding, deleting, and opening all links functionalities)
 
 ## Running the program locally
-1.  `rails db:drop` (optional, only if needed to destroy db first)
+1.  `rails db:drop` (optional, only if needed to destroy database first)
 2.  `rails db:create db:migrate db:seed` (create, migrate, and seed the database)
 3.  `rails server` (launch web server locally)
 4.  open `http://127.0.0.1:3000` or `http://[::1]:3000` on a web browser
