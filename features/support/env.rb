@@ -4,6 +4,11 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
+# ENV['RAILS_ENV'] = test
+
+
+require 'simplecov'
+#SimpleCov.start
 require 'cucumber/rails'
 
 # frozen_string_literal: true

@@ -1,48 +1,69 @@
-Feature: display list of movies filtered by MPAA rating
- 
-  As a concerned parent
-  So that I can quickly browse movies appropriate for my family
-  I want to see movies matching only certain MPAA ratings
+Feature: search for movies by director
 
-Background: movies have been added to database
+  As a movie buff
+  So that I can find movies with my favorite director
+  I want to include and search on director information in movies I enter
+
+Background: workspaces, links in database
 
   Given the following workspaces exist:
-  | workspace_name        
-  | SaaS                  
-  | MBC                   
-  | When Harry Met Sally    
-  | The Help                
-  | Chocolat                
-  | Amelie                  
-  | 2001: A Space Odyssey   
-  | The Incredibles         
-  | Raiders of the Lost Ark 
-  | Chicken Run             
+  | workspace_name  |
+  | SaaS            |
+  | MBC             |
+  | Research        |
+  | TA              |
 
-  And  I am on the RottenPotatoes home page
-  Then 10 seed movies should exist
+  Given the following links exist:
+  | workspace_name  |             link                      |
+  | SaaS            |    'https://tesla.com/'               |
+  | MBC             |    'https://facebook.com/'            |
+  | MBC             |    'https://meta.com/'                |
+  | Research        |    'https://messenger.com/'           |
+  | Research        |    'https://gmail.com/'               |
+  | TA              |    'https://calendar.google.com/'     |
+  | TA              |     'https://tesla.com/'              |
 
-Scenario: restrict to movies with 'PG' or 'R' ratings
-  # enter step(s) to check the 'PG' and 'R' checkboxes
-  When I check the following ratings: PG, R
-  # enter step(s) to uncheck all other checkboxes
-  And I uncheck the following ratings: G, PG-13
-  # enter step to "submit" the search form on the homepage
-  And I press "Refresh"
-  # enter step(s) to ensure that PG and R movies are visible
-  Then I should see "The Incredibles"
-  And I should see "Raiders of the Lost Ark"
-  And I should see "The Terminator"
-  And I should see "When Harry Met Sally"
-  And I should see "Amelie"
-  # enter step(s) to ensure that other movies are not visible
-  And I should not see "Aladdin"
-  And I should not see "The Help"
-  And I should not see "Chocolat"
-  And I should not see "2001: A Space Odyssey"
-  And I should not see "Chicken Run"
+Scenario: see all workspaces on home page
+  Given I am on the home page
+  Then I should see all the workspaces
 
-Scenario: all ratings selected
-  # see assignment
-  When I check the following ratings: PG, G, R, PG-13
-  Then I should see all of the movies
+Scenario: add workspace to database
+  Given I am on the home page
+  When I follow "Add new workspace"
+  Then I should be on the Create New Workspace page
+  And I fill in "Name" with "Travel"
+  And I press "Add to Workspaces"
+  Then I should be on the home page
+  And I should see "Travel"
+
+Scenario: go to specific workspace and see all associated links
+  Given I am on the home page
+  And I go to the workspace page for "MBC"
+  Then I should see the "https://facebook.com/" link
+  And I should see the "https://meta.com/" link
+  And I should not see the "https://messenger.com/" link
+  And I should not see the "https://calendar.google.com/" link
+
+Scenario: delete specific workspace from database
+  Given I am on the workspace page for "SaaS"
+  And I should see the "https://www.google.com" link
+  When I follow "Delete"
+  Then I should be on the home page
+  And I should not see "SaaS"
+
+Scenario: return to dashboard from specific workspace
+  Given I am on the workspace page for "SaaS"
+  When I follow "Back to workspace dashboard"
+  Then I should be on the home page
+
+Scenario: add link to specific workspace
+  Given I am on the workspace page for "SaaS"
+  And I should see the "https://www.google.com" link
+  When I press "Add Link"
+  Then I should be on the workspace page for "SaaS"
+  
+  
+Scenario: delete link from specific workspace
+  Given I am on the workspace page for "MBC"
+  Then I should see the "https://facebook.com/" link
+  And I should see the "https://meta.com/" link

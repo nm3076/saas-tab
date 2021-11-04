@@ -26,6 +26,15 @@ class WorkspacesController < ApplicationController
 
     def destroy
         @workspace = Workspace.find(params[:id])
+        @all_links = Link.where(workspace_id: @workspace.id)
+
+        puts "all links"
+        puts @all_links
+        
+        @all_links.each do | l |
+            Link.find_by(id: l.id).destroy
+        end 
+
         @workspace.destroy
         flash[:notice] = "Workspace '#{@workspace.workspace_name}' deleted."
         redirect_to workspaces_path
@@ -63,7 +72,6 @@ class WorkspacesController < ApplicationController
         puts "SENDING JSON DATA to browser"
         render status: 200, json: @links
         return 
-        puts "after rendering..........."
     end
      
 end
