@@ -1,8 +1,8 @@
-Feature: search for movies by director
+Feature: create and organize workspaces
 
-  As a movie buff
-  So that I can find movies with my favorite director
-  I want to include and search on director information in movies I enter
+  As a student
+  So that I can complete my work in an efficient and effective manner
+  I want to manage my links and resources for all aspects of my lifes
 
 Background: workspaces, links in database
 
