@@ -12,10 +12,10 @@
 - Open all links in existing workspace
 
 ## Notes
-### On running the program
+#### On running the program
 - Please disable any ad blockers on your web browser before clicking on "Open All" in the specific workspace to open all associated links
 - Please enter valid links that start with `https://www.`, `http://www.`, `http://`, or `https://` when adding new links
-### On testing the program
+#### On testing the program
 - The RSpec and Cucumber tests cover all models, views, and controllers - any % that may not be covered falls under JS (for adding, deleting, and opening all links functionalities)
 
 ## Link to Github repo
@@ -32,11 +32,11 @@ https://secure-mesa-61460.herokuapp.com/
 4.  open `http://127.0.0.1:3000` or `http://[::1]:3000` on a web browser
 
 ## Running the Test Suite
-### Testing with RSpec
+#### Testing with RSpec
 Run `bundle exec rspec`
-### Testing with Cucumber
+#### Testing with Cucumber
 Run `rake cucumber`
-### View complete coverage report
+#### View complete coverage report
 Run `open coverage/index.html` 
 
 ## Group Members
