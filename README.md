@@ -18,7 +18,7 @@
 
 ### Notes
 #### On running the program
-- Please disable any ad blockers on your web browser before clicking on `Open All` in the specific workspace to open all associated links
+- Please disable any ad blockers on your web browser/alternatively whitelist the root host before clicking on `Open All` in the specific workspace to open all associated links
 - Please enter valid links that start with `https://www.`, `http://www.`, `http://`, or `https://` when adding new links (`Open All` only opens valid links to the browser)
 #### On testing the program
 - The RSpec and Cucumber tests cover all models, views, and controllers - any % that may not be covered falls under JS (for adding, deleting, and opening all links functionalities)
