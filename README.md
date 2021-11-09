@@ -27,6 +27,7 @@
 - Joint RSpec and Cucumber coverage locally yields 100% (as shown to George in OH and exists in the cucumber3 branch). However, when deploying to heroku, there was an error to "define constant ApplicationCable::Connection, but didnt". In order to fix this, we uncommented the code in the `app/channels/application_cable/*` files. These two classes under this module `application_cable` are unused, but were left in for heroku deployment purposes.
 
 ## Running the program locally
+0.  `bundle install` (installs necesarry gems, etc.)
 1.  `rails webpacker:install` (not currently included in gemfile due to environment discrepancies - will be rectified) 
 2.  `rails db:drop` (optional, only if needed to destroy database first)
 3.  `rails db:create db:migrate db:seed` (create, migrate, and seed the database)
