@@ -10,20 +10,20 @@
 
 # # Workspace.connection
 
-user = User.create!(:username => "rl2912", :email => "rl2912@columbia.edu", :first_name => "Richard", :last_name => "Lopez")
+user = User.create!(:username => "rl2912", :email => "rl2912@columbia.edu", :first_name => "Richard", :last_name => "Lopez", :password => "Richard123!")
 workspace = Workspace.create!(:workspace_name=> "SaaS", :user => user.email, :tags => "Classes", :notes => "Engineering Software as a Service", :user_id => user.id)
 Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://tesla.com/', :workspace_id => workspace.id)
 
-user = User.create!(:username => "ks3650", :email => "ks3650@columbia.edu", :first_name => "Karen", :last_name => "Shi")
+user = User.create!(:username => "ks3650", :email => "ks3650@columbia.edu", :first_name => "Karen", :last_name => "Shi", :password => "Karen123!")
 workspace = Workspace.create!(:workspace_name=> "MBC", :user => user.email, :tags => "Classes", :notes => "Making, Breaking Codes", :user_id => user.id)
 Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://facebook.com/', :workspace_id => workspace.id)
 Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://meta.com/', :workspace_id => workspace.id)
 
-user = User.create!(:username => "nm3076", :email => "nm3076@columbia.edu", :first_name => "Naviya", :last_name => "Makhija")
+user = User.create!(:username => "nm3076", :email => "nm3076@columbia.edu", :first_name => "Naviya", :last_name => "Makhija", :password => "Naviya123!")
 workspace = Workspace.create!(:workspace_name=> "History Lab", :user => user.email, :tags => "Research", :notes => "NLP and Computer Vision", :user_id => user.id)
 Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://messenger.com/', :workspace_id => workspace.id)
 Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://gmail.com/', :workspace_id => workspace.id)
 
-user = User.create!(:username => "jp3864", :email => "jp3864@columbia.edu", :first_name => "Jessica", :last_name => "Peng")
+user = User.create!(:username => "jp3864", :email => "jp3864@columbia.edu", :first_name => "Jessica", :last_name => "Peng", :password => "Jessica123!")
 workspace = Workspace.create!(:workspace_name=> "Intro to Python", :user => user.email, :tags => "TA", :notes => "Scheduling and Drive", :user_id => user.id)
 Link.create!(:workspace_name => workspace.workspace_name, :link => 'https://calendar.google.com/', :workspace_id => workspace.id)
