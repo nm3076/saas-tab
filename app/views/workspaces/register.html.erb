@@ -47,7 +47,7 @@
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form-button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -117,17 +117,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
-    </style>
+</style>
     <div class="form">
       <h3 class="register-title"> Register </h3>
-      <form class="register-form">
-        <input type="text" placeholder="first name"/>
-        <input type="text" placeholder="last name"/>
-        <input type="text" placeholder="email"/>
-        <input type="text" placeholder="username"/>
-        <input type="password" placeholder="password"/>
-        <button> <%= link_to 'Create New Account Now', go_to_login_path %> </button>
-      </form>
+      <%= form_tag login_path, :class => 'register-form' do %>
+        <%= label :user, :first_name, 'First Name' %>
+        <%= text_field :user, :first_name %>
+        <%= label :user, :last_name, 'Last Name' %>
+        <%= text_field :user, :last_name %>
+        <%= label :user, :email, 'Email' %>
+        <%= text_field :user, :email %>
+        <%= label :user, :username, 'Username' %>
+        <%= text_field :user, :username %>
+        <%= label :user, :password, 'Password' %>
+        <%= text_field :user, :password %>
+        <%= label :user, :password, 'Confirm Password' %>
+        <%= text_field :user, :password %>
+        <%= submit_tag 'Create Account', :class => 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 </body>
