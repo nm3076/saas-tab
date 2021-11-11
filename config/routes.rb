@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   
   delete 'delete_link_from_workspace/:id', to: 'workspaces#delete_link_from_workspace', as: 'delete_link_from_workspace'
   
+  get 'go_to_workspaces', to: 'workspaces#index'
+  get 'go_to_register', to: 'workspaces#register'
+  get 'go_to_login', to: 'workspaces#login'
 
   get 'open_links/:id', to: 'workspaces#open_links', as: 'open_links'
   # get '/workspace_links', to: 'workspace#workspace_links', as: 'workspace_links'
