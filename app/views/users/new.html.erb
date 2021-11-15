@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Log In</title>
+  <title>Register</title>
   <link href="/app/assets/stylesheets/application.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-  <div class="login-page">
+  <div class="register-page">
     <script>
         $('.message a').click(function(){
     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -16,12 +16,12 @@
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 
-.login-page {
+.register-page {
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
 }
-.login-title
+.register-title
 {
   margin-bottom: 1.5em;
   font-weight: bold;
@@ -47,7 +47,7 @@
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form-button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -117,15 +117,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
-    </style>
+</style>
     <div class="form">
-      <h3 class="login-title"> Login  </h3>
-      <form class="login-form">
-        <input type="text" placeholder="username"/>
-        <input type="password" placeholder="password"/>
-        <button> <%= link_to 'Login', dashboard_path %> </button>
-        <p class="message">Don't have an account? <%= link_to 'Create an account now!', register_path %></p>
-      </form>
+      <h3 class="register-title"> Register </h3>
+      <%= form_for(@user) do |f| %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+  
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+  
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+  
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation %>
+  
+        <%= f.submit "Create Account", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </body>

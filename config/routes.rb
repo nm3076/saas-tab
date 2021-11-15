@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+  get 'static_pages/help'
+  get 'sessions/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root :to => 'workspaces#login'
+  root :to => 'static_pages#home'
 
   resources :workspaces
+  resources :users
   
   delete 'delete_link_from_workspace/:id', to: 'workspaces#delete_link_from_workspace', as: 'delete_link_from_workspace'
   
   get 'dashboard', to: 'workspaces#index'
-  get 'register', to: 'workspaces#register'
-  post 'login', to: 'workspaces#login'
+  get 'signup', to: 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
 
   get 'open_links/:id', to: 'workspaces#open_links', as: 'open_links'
   # get '/workspace_links', to: 'workspace#workspace_links', as: 'workspace_links'
