@@ -7,8 +7,6 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "Users", '#' %></li>
-
           <!--Returns CUrrent USER, mapping to path users/id -->
           <li><%= link_to "Profile", current_user %></li>
 

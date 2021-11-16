@@ -1,21 +1,21 @@
 class WorkspacesController < ApplicationController
     protect_from_forgery with: :null_session
     def index
-        @workspaces = Workspace.all
+        @curr_user = current_user
+        @workspaces = Workspace.where(user_id: @curr_user.id)
     end
 
     def new
-        # default: render 'new' template
     end
 
     def create
-        @workspace = Workspace.create!(workspace_params)
+        curr_user = current_user
+        @workspace = Workspace.create!(:workspace_name=> workspace_params['workspace_name'], 
+                                       :user => curr_user.email, 
+                                       :tags => "", 
+                                       :notes => "", 
+                                       :user_id => curr_user.id)
         redirect_to workspaces_path
-    end
-
-    def workspace_params
-        params.require(:workspace).permit(:workspace_name)
-        # @links = Link.all
     end
 
     def show
@@ -72,6 +72,12 @@ class WorkspacesController < ApplicationController
         puts "SENDING JSON DATA to browser"
         render status: 200, json: @links
         return 
+    end
+
+
+    private 
+    def workspace_params
+        params.require(:workspace).permit(:workspace_name)
     end
      
 end
