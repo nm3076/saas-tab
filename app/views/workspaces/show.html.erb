@@ -8,7 +8,7 @@
 </div> 
 
 <%= form_tag workspace_path, :method => :patch , :class => 'form' do %>
-  <textarea id="notes-section" placeholder="Write notes here. . ."></textarea>
+  <textarea name="workspace-overview" id="notes-section" placeholder="Write notes here. . ."><%= @workspace.notes %></textarea>
 
   <table >
     <thead>
@@ -23,13 +23,33 @@
     <tbody id="link-list">
       <% @links.each do |l| %>
         <tr>
+
+          <!-- Name input --> 
           <td>
-            <%= l.link %>
+            <input class="workspace-input" name="name-<%= l.id %>" value="<%= l.nickname %>" >
           </td>
+
+          <!--Link Input -->
           <td>
-          <%= link_to 'Delete Link', delete_link_from_workspace_path(l.id), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?' %>
+            <input class="workspace-input" name="link-<%= l.id %>" value="<%= l.link %>" >
+          </td>
+
+          <!--Date Created -->
+          <td>
+            <input class="workspace-input" name="date-<%= l.id %>" value="<%= l.created_at %>" >
+          </td>
+
+          <!--Notes For Link -->
+          <td>
+            <input class="workspace-input" name="notes-<%= l.id %>" value="<%= l.notes %>" >
+          </td>
+
+          <td>
+            <%= link_to 'Delete Link', delete_link_from_workspace_path(l.id), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?' %>
           </td>  
+
         </tr>
+
       <% end %>
     </tbody>
   </table>

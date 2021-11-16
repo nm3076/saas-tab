@@ -11,7 +11,85 @@ class WorkspacesController < ApplicationController
     def update
         puts "got paramaters for update workspace"
         puts params
+        
+        workspace_to_update = params[:id]
+        curr_workspace = Workspace.find_by(id: workspace_to_update)
+        curr_workspace.update(notes: params["workspace-overview"])
 
+        all_links = Link.where(workspace_id: workspace_to_update) 
+
+        all_links.each do |li|
+            li.destroy
+        end
+
+        updated_link_inputs = Hash.new
+        
+        params.each do |key, val| 
+
+            if key.include? "name"
+                index = key.index('-')+ 1
+                new_key = key[index..].to_i
+
+                if updated_link_inputs.has_key?(new_key) 
+                    updated_link_inputs[new_key]["name"] = val
+                else
+                    updated_link_inputs[new_key] = Hash.new
+                    updated_link_inputs[new_key]["name"]= val 
+                end 
+
+            elsif key.include? "link"
+                index = key.index('-')+ 1
+                new_key = key[index..].to_i
+
+                if updated_link_inputs.has_key?(new_key) 
+                    updated_link_inputs[new_key]["link"] = val
+                else
+                    updated_link_inputs[new_key] = Hash.new
+                    updated_link_inputs[new_key]["link"]= val 
+                end 
+
+            elsif key.include? "date"
+                index = key.index('-')+ 1
+                new_key = key[index..].to_i
+
+                if updated_link_inputs.has_key?(new_key) 
+                    updated_link_inputs[new_key]["date"] = val
+                else
+                    updated_link_inputs[new_key] = Hash.new
+                    updated_link_inputs[new_key]["date"]= val 
+                end 
+
+            elsif key.include? "notes"
+                index = key.index('-') + 1
+                new_key = key[index..].to_i
+
+                if updated_link_inputs.has_key?(new_key) 
+                    updated_link_inputs[new_key]["notes"] = val
+                else
+                    updated_link_inputs[new_key] = Hash.new
+                    updated_link_inputs[new_key]["notes"]= val 
+                end 
+            end
+        end
+
+        puts "hashmap of values to add to links table"
+        puts updated_link_inputs
+
+        updated_link_inputs.each do |k, link_groups|
+            # k is group number, link_groups is hashmap with values "notes", "name", etc.
+            Link.create!(nickname: link_groups["name"], 
+                         link: link_groups["link"], 
+                         created_at: link_groups["date"], 
+                         notes: link_groups["notes"], 
+                         workspace_id: params["id"])
+        end 
+
+        puts "link after database insert"
+        new_link = Link.find_by(workspace_id: params["id"])    
+        puts new_link.notes    
+        
+
+        redirect_to workspace_path
     end
 
     def create
@@ -64,7 +142,6 @@ class WorkspacesController < ApplicationController
         belongs_to_workspace = Workspace.find(belongs_to_workspace)
         
         link_to_delete.destroy
-        flash[:notice] = "Link deleted from '#{belongs_to_workspace.workspace_name}' deleted."
         redirect_to workspace_path(belongs_to_workspace)
     end
 
