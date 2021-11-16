@@ -8,6 +8,12 @@ class WorkspacesController < ApplicationController
     def new
     end
 
+    def update
+        puts "got paramaters for update workspace"
+        puts params
+
+    end
+
     def create
         curr_user = current_user
         @workspace = Workspace.create!(:workspace_name=> workspace_params['workspace_name'], 
