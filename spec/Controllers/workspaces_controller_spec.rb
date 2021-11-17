@@ -115,25 +115,59 @@ RSpec.describe WorkspacesController, type: :controller do
 
 
 
-    # add link to workspace test
+    # ADD multiple links to workspace test
     describe "add link to workspace" do
       it "successfully add links to a workspace" do
         post :create, params: {:workspace => {:workspace_name => "PLT" }}
         @all_workspaces = Workspace.all
         @made_workspace = Workspace.find_by(:workspace_name => "PLT")
         workspace_id = @made_workspace.id
+        Link.create!(:workspace_name => "PLT", :link => "https://www.awesomeinventions.com", :workspace_id => @made_workspace.id)
+  
+        patch :update, params: { :id => @made_workspace.id , 
+                                "link-1" => "https://www.awesomeinventions.com", 
+                                "name-1" =>  "Test", 
+                                "date-1" =>  "11-17-21",
+                                "notes-1" => "Hello world", 
 
-        patch :update, params: { :id => @made_workspace.id , "link-1" => "https://www.awesomeinventions.com" }
+                                "link-2" => "https://www.pinterest.com/", 
+                                "name-2" =>  "Other Test", 
+                                "date-2" =>  "11-17-21",
+                                "notes-2" => "Hello world 2",
+
+                                "link-2" => "https://www.pinterest.com/", 
+                                "name-2" =>  "Otest", 
+                                "date-2" =>  "11-21",
+                                "notes-2" => "Hello world 3", 
+                                
+                                "link-3" => "https://www.bumble.com/", 
+                                "name-3" =>  "Other other Test", 
+                                "date-3" =>  "11-21",
+                                "notes-3" => "Hello world 4"
+                              }
+
         @all_links = Link.all
         @created_link = Link.find_by(:link => "https://www.awesomeinventions.com")
+        @other_link = Link.find_by(:link => "https://www.pinterest.com/")
+        @other_link_1 = Link.find_by(:link => "https://www.bumble.com/")
 
         expect(@all_links).to include( @created_link )
+        expect(@all_links).to include( @other_link )
+        expect(@all_links).to include( @other_link_1 )
       
         Link.find_by(:link => "https://www.awesomeinventions.com").destroy
+        Link.find_by(:link => "https://www.pinterest.com/").destroy
+        Link.find_by(:link => "https://www.bumble.com/").destroy
+
         Workspace.find_by(:workspace_name => "PLT").destroy
 
       end
     end
+
+
+
+
+
 
 
     # remove link from workspace test
@@ -202,6 +236,14 @@ RSpec.describe WorkspacesController, type: :controller do
       it "is class created for application job" do
         link_controller = LinksController.new 
         expect(link_controller).to be_instance_of(LinksController)
+      end
+    end
+
+    # Test if collaborator is working properly
+    describe "testing instance of appliation job class" do
+      it "is class created for application job" do
+        collab = Collaborator.new 
+        expect(collab).to be_instance_of(Collaborator)
       end
     end
 
