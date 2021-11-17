@@ -63,7 +63,7 @@ class WorkspacesController < ApplicationController
     def open_links
         id = params[:id]
         @workspace = Workspace.find(id)
-        @links = Link.where(workspace_id: @workspace.id) 
+        @links = Link.where(workspace_id: @workspace.id)
         render status: 200, json: @links
         return 
     end

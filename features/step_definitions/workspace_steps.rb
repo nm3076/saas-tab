@@ -14,6 +14,12 @@ Given /^a logged in user$/ do
   click_button "Log in"
 end
 
+Given /the following users exist/ do |users_table|
+  users_table.hashes.each do |user|
+    User.create user
+  end
+end
+
 Given /the following workspaces exist/ do |workspaces_table|
   workspaces_table.hashes.each do |workspace|
     Workspace.create workspace
