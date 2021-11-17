@@ -1,0 +1,49 @@
+
+/* Title and button container */
+.workspace-title-container{
+
+    min-width: fit-content; 
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* Button css */
+.workspace-title-container button{
+    border: 2px solid rgb(14, 112, 165);
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+
+    padding-left: 8px;
+    padding-right: 8px;
+
+}
+
+.workspace-title-container button:hover{
+    transform: scale(1.1);
+    transition-property: transform;
+    transition-duration: .2s;
+}
+
+/* workspace text area CSS */
+.workspace-textarea{
+    border: none;
+    border-radius: 5px;
+
+    padding-left: 5px;
+
+    width: 40vw; 
+    height: 80px;
+}
+
+.workspace-textarea::-webkit-resizer {
+    display: none;
+}
+
+.workspace-textarea:hover{
+    cursor: pointer;
+    border: 2px dashed lightblue;
+}

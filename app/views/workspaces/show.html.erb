@@ -7,8 +7,8 @@
   <button id="add-link-to-workspace" value=<%= @workspace.id %>> Add Link </button>
 </div> 
 
-<%= form_tag workspace_path, :method => :patch , :class => 'form' do %>
-  <textarea name="workspace-overview" id="notes-section" placeholder="Write notes here. . ."><%= @workspace.notes %></textarea>
+<%= form_tag workspace_path, :method => :patch  do %>
+  <textarea class="workspace-textarea" name="workspace-overview" id="notes-section" placeholder="Write notes here. . ."><%= @workspace.notes %></textarea>
 
   <table >
     <thead>
