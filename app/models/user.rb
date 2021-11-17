@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :workspaces
+    has_many :workspaces, dependent: :destroy
     # to add more validation, make validation restrictions here for user
     before_save { self.email = email.downcase }
     validates :username, presence: true
@@ -12,9 +12,9 @@ class User < ApplicationRecord
 
 
     #used by user features during testing
-    # def User.digest(string)
-    #     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-    #                                                   BCrypt::Engine.cost
-    #     BCrypt::Password.create(string, cost: cost)
-    # end
+    def User.digest(string)
+        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                      BCrypt::Engine.cost
+        BCrypt::Password.create(string, cost: cost)
+    end
 end

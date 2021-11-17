@@ -2,3 +2,121 @@
 // Place all the styles related to the Workspaces controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.navbar .nav-link {
+    color: #fff;
+}
+
+
+.navbar .navbar-brand {
+    color: #fff;
+}
+
+body {
+    padding-top: 80px;
+    background-color: #4ca1af;
+    background-image: linear-gradient(135deg, #4ca1af 0%, #c4e0e5 100%);
+}
+.vertical-menu {
+width: 200px;
+}
+
+.user-profile
+{
+margin-top: 0.5em;
+margin-left: 0.3em;
+
+}
+
+.vertical-menu a {
+background-color: #eee;
+color: black;
+display: block;
+padding: 12px;
+text-decoration: none;
+}
+
+.vertical-menu i {
+margin-left: 0.7em;
+}
+
+.vertical-menu button {
+margin-left: 0.7em;
+}
+
+.vertical-menu a:hover {
+background-color: #ccc;
+}
+
+.vertical-menu a.active {
+background-color: #2f9eca;
+color: white;
+}
+
+button {
+height: 2em;
+width: 2em;
+font-weight: bold;
+border-radius: 50%;
+background-color: transparent;
+color: white;
+text-align: center;
+cursor: pointer;
+border-color:transparent;
+}
+
+button:hover {
+    background: #dad6d6;
+}
+
+.body-container
+{
+display:flex;
+flex-direction: column;
+}
+.dashboard {
+display: flex;
+flex-direction: row;
+}
+
+.add-workspace
+{
+// position: absolute;
+// right: 14em;
+color: white;
+}
+
+.workspace-container
+{
+margin-left: 5em;
+width: 48em;
+background-color: rgb(184, 223, 255);
+border-color: white;
+border-style: solid;
+border-radius: 1em;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+
+}
+
+.workspace-container .workspace {
+height: 11em;
+width: 17em;
+margin: 2em;
+border-radius: 1em;
+background-color: white;;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.workspace-container .workspace:hover {
+background-color: #ccc;
+}
+
+.workspace-container img {
+height: 8em;
+width: 15em;
+}

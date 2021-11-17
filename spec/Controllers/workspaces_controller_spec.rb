@@ -1,35 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe WorkspacesController, type: :controller do
-    include SessionsHelper
 
-    # make sure user is logged in before working with workspaces
-    before(:each) do
-      @current_user_logged_in = User.create!(:username => "rl3020", :email => "rl3020@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar")
-      log_in @current_user_logged_in
-    end
-
-    # delete the user and the login session after each 
-    after(:each) do
-      @current_user_logged_in.destroy
-      log_out
-    end
-  
     # test get index
     describe "GET #index" do
       it "returns a successful response" do
-        
         get :index
         expect(response).to be_successful
-
       end
 
       it "renders the index template" do
-
         get :index
         expect(response).to render_template("index")
-        
       end
+
     end
 
     #test get new view
@@ -105,7 +89,7 @@ RSpec.describe WorkspacesController, type: :controller do
         expect(@all_workspaces).to include(@made_workspace)
 
         #add link to workspace to test if it works to delete
-        patch :update, params: { :id => @made_workspace.id , "link-1" => "www.google.com" }
+        post :add_link_to_workspace, params: { :id => @made_workspace.id , :_json =>"https://www.awesomeinventions.com" }
         
         #actual delete http request
         delete :destroy, params: { :id => @made_workspace.id }
@@ -115,59 +99,25 @@ RSpec.describe WorkspacesController, type: :controller do
 
 
 
-    # ADD multiple links to workspace test
+    # add link to workspace test
     describe "add link to workspace" do
       it "successfully add links to a workspace" do
         post :create, params: {:workspace => {:workspace_name => "PLT" }}
         @all_workspaces = Workspace.all
         @made_workspace = Workspace.find_by(:workspace_name => "PLT")
         workspace_id = @made_workspace.id
-        Link.create!(:workspace_name => "PLT", :link => "https://www.awesomeinventions.com", :workspace_id => @made_workspace.id)
-  
-        patch :update, params: { :id => @made_workspace.id , 
-                                "link-1" => "https://www.awesomeinventions.com", 
-                                "name-1" =>  "Test", 
-                                "date-1" =>  "11-17-21",
-                                "notes-1" => "Hello world", 
 
-                                "link-2" => "https://www.pinterest.com/", 
-                                "name-2" =>  "Other Test", 
-                                "date-2" =>  "11-17-21",
-                                "notes-2" => "Hello world 2",
-
-                                "link-2" => "https://www.pinterest.com/", 
-                                "name-2" =>  "Otest", 
-                                "date-2" =>  "11-21",
-                                "notes-2" => "Hello world 3", 
-                                
-                                "link-3" => "https://www.bumble.com/", 
-                                "name-3" =>  "Other other Test", 
-                                "date-3" =>  "11-21",
-                                "notes-3" => "Hello world 4"
-                              }
-
+        post :add_link_to_workspace, params: { :id => workspace_id, :_json =>"https://www.awesomeinventions.com" }
         @all_links = Link.all
         @created_link = Link.find_by(:link => "https://www.awesomeinventions.com")
-        @other_link = Link.find_by(:link => "https://www.pinterest.com/")
-        @other_link_1 = Link.find_by(:link => "https://www.bumble.com/")
 
         expect(@all_links).to include( @created_link )
-        expect(@all_links).to include( @other_link )
-        expect(@all_links).to include( @other_link_1 )
       
         Link.find_by(:link => "https://www.awesomeinventions.com").destroy
-        Link.find_by(:link => "https://www.pinterest.com/").destroy
-        Link.find_by(:link => "https://www.bumble.com/").destroy
-
         Workspace.find_by(:workspace_name => "PLT").destroy
 
       end
     end
-
-
-
-
-
 
 
     # remove link from workspace test
@@ -178,7 +128,7 @@ RSpec.describe WorkspacesController, type: :controller do
         @made_workspace = Workspace.find_by(:workspace_name => "PLT")
         workspace_id = @made_workspace.id
 
-        patch :update, params: { :id => @made_workspace.id , "link-1" => "https://www.awesomeinventions.com" }
+        post :add_link_to_workspace, params: { :id => workspace_id, :_json =>"https://www.awesomeinventions.com" }
         @all_links = Link.all
         @created_link = Link.find_by(:link => "https://www.awesomeinventions.com")
         
@@ -202,7 +152,7 @@ RSpec.describe WorkspacesController, type: :controller do
         @made_workspace = Workspace.find_by(:workspace_name => "PLT")
         workspace_id = @made_workspace.id
 
-        patch :update, params: { :id => @made_workspace.id , "link-1" => "https://www.awesomeinventions.com" }
+        post :add_link_to_workspace, params: { :id => workspace_id, :_json =>"https://www.awesomeinventions.com" }
 
         post :open_links, params: { :id => workspace_id }
 
@@ -236,14 +186,6 @@ RSpec.describe WorkspacesController, type: :controller do
       it "is class created for application job" do
         link_controller = LinksController.new 
         expect(link_controller).to be_instance_of(LinksController)
-      end
-    end
-
-    # Test if collaborator is working properly
-    describe "testing instance of appliation job class" do
-      it "is class created for application job" do
-        collab = Collaborator.new 
-        expect(collab).to be_instance_of(Collaborator)
       end
     end
 
