@@ -105,7 +105,7 @@ RSpec.describe WorkspacesController, type: :controller do
         expect(@all_workspaces).to include(@made_workspace)
 
         #add link to workspace to test if it works to delete
-        post :add_link_to_workspace, params: { :id => @made_workspace.id , :_json =>"https://www.awesomeinventions.com" }
+        patch :update, params: { :id => @made_workspace.id , "link-1" => "www.google.com" }
         
         #actual delete http request
         delete :destroy, params: { :id => @made_workspace.id }
@@ -123,7 +123,7 @@ RSpec.describe WorkspacesController, type: :controller do
         @made_workspace = Workspace.find_by(:workspace_name => "PLT")
         workspace_id = @made_workspace.id
 
-        post :add_link_to_workspace, params: { :id => workspace_id, :_json =>"https://www.awesomeinventions.com" }
+        patch :update, params: { :id => @made_workspace.id , "link-1" => "https://www.awesomeinventions.com" }
         @all_links = Link.all
         @created_link = Link.find_by(:link => "https://www.awesomeinventions.com")
 
@@ -144,7 +144,7 @@ RSpec.describe WorkspacesController, type: :controller do
         @made_workspace = Workspace.find_by(:workspace_name => "PLT")
         workspace_id = @made_workspace.id
 
-        post :add_link_to_workspace, params: { :id => workspace_id, :_json =>"https://www.awesomeinventions.com" }
+        patch :update, params: { :id => @made_workspace.id , "link-1" => "https://www.awesomeinventions.com" }
         @all_links = Link.all
         @created_link = Link.find_by(:link => "https://www.awesomeinventions.com")
         
@@ -168,7 +168,7 @@ RSpec.describe WorkspacesController, type: :controller do
         @made_workspace = Workspace.find_by(:workspace_name => "PLT")
         workspace_id = @made_workspace.id
 
-        post :add_link_to_workspace, params: { :id => workspace_id, :_json =>"https://www.awesomeinventions.com" }
+        patch :update, params: { :id => @made_workspace.id , "link-1" => "https://www.awesomeinventions.com" }
 
         post :open_links, params: { :id => workspace_id }
 
