@@ -92,19 +92,6 @@ class WorkspacesController < ApplicationController
         redirect_to workspace_path
     end
 
-    # def create
-    #     curr_user = current_user
-    #     # @workspace = Workspace.create!(:workspace_name=> workspace_params['workspace_name'], 
-    #     #                                :user => curr_user.email, 
-    #     #                                :tags => "", 
-    #     #                                :notes => "", 
-    #     #                                :user_id => curr_user.id)
-    #     curr_user.workspaces.create!(:workspace_name=> workspace_params['workspace_name'], 
-    #                                    :tags => "", 
-    #                                    :notes => "")
-    #     redirect_to workspaces_path
-    # end
-
 
     def create
         @workspace = current_user.workspaces.build(workspace_params)
@@ -135,27 +122,22 @@ class WorkspacesController < ApplicationController
         
     end
 
-    # def destroy
-    #     @workspace = Workspace.find(params[:id])
-    #     @all_links = Link.where(workspace_id: @workspace.id)
-
-    #     puts "all links"
-    #     puts @all_links
-        
-    #     @all_links.each do | l |
-    #         Link.find_by(id: l.id).destroy
-    #     end 
-
-    #     @workspace.destroy
-    #     flash[:notice] = "Workspace '#{@workspace.workspace_name}' deleted."
-    #     redirect_to workspaces_path
-    # end
-
     def destroy
+        @workspace = Workspace.find(params[:id])
+        @all_links = Link.where(workspace_id: @workspace.id)
+
+        puts "all links"
+        puts @all_links
+        
+        @all_links.each do | l |
+            Link.find_by(id: l.id).destroy
+        end 
+
         @workspace.destroy
-        flash[:success] = "Workspace deleted"
-        redirect_to request.referrer || root_url
-      end
+        flash[:notice] = "Workspace '#{@workspace.workspace_name}' deleted."
+        redirect_to workspaces_path
+    end
+
 
     def add_link_to_workspace
         puts "server got: "
