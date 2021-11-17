@@ -1,3 +1,24 @@
+Given /^a valid user$/ do
+  @user = User.create!({
+             :username => "karen",
+             :email => "test@columbia.edu",
+             :password => "hello"
+           })
+end
+
+Given /^a logged in user$/ do
+  Given "a valid user"
+  visit login
+  fill_in "Email", :with => "test@columbia.edu"
+  fill_in "Password", :with => "hello"
+  click_button "Log in"
+end
+
+Given /the following users exist/ do |users_table|
+  users_table.hashes.each do |user|
+    User.create user
+  end
+end
 
 Given /the following workspaces exist/ do |workspaces_table|
   workspaces_table.hashes.each do |workspace|
