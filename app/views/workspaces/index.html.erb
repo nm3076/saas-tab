@@ -2,7 +2,7 @@
   <div class="container">
     <h2 class="display-4"> <%= @curr_user.first_name %>'s workspaces </h2>
 
-    <div class="add-workspace"> <%= link_to 'Add new workspace +', new_workspace_path, :class => 'add-workspace' %> </div>
+    <div class="add-workspace"> <h4> <%= link_to 'Add new workspace +', new_workspace_path%> </h4> </div>
 
     <div class="row workspace-container">
       <% @workspaces.each do |workspace| %>

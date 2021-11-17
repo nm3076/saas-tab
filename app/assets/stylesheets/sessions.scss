@@ -7,3 +7,19 @@ body {
     background-color: #4ca1af;
     background-image: linear-gradient(135deg, #4ca1af 0%, #c4e0e5 100%);
 }
+
+button {
+    height: 2em;
+    width: 2em;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border-color:transparent;
+}
+    
+button:hover {
+    background: #dad6d6;
+}
