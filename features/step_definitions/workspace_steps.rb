@@ -10,8 +10,21 @@ Then /^they should see an error message$/ do
   page.should have_selector ".alert", text: "Invalid email/password combination"
 end
 
+# Given /^I am a new, authenticated user$/ do
+#   email = 'test@columbia.edu'
+#   password = 'hello'
+
+#   visit ''
+#   fill_in "Email", :with => email
+#   fill_in "Password", :with => password
+#   click_button "Log in"
+#   # expect(page).to have_text("You are now logged in") # or whatever message is displayed to indicate successfull login - if using RSpec
+#   # page.assert_text("You are now logged in") # if not using RSpec
+# end
+
 Given /^the user has an account$/ do
-  @user = User.create(username: "Karen", email: "test@columbia.edu",
+  @user = User.create(username: "test123", email: "test@columbia.edu",
+                      first_name: "Test", last_name: "Test",
                       password: "hello", password_confirmation: "hello")
 end
 
@@ -23,7 +36,7 @@ When /^the user submits valid signin information$/ do
 end
 
 Then /^they should see their profile page$/ do
-  page.should have_selector('h4', text: @user.first_name)
+  page.should have_selector('h2', text: @user.first_name)
 end
 
 Then /^they should see a signout link$/ do
@@ -37,17 +50,23 @@ end
 
 Given /^a valid user$/ do
   @user = User.create!({
-             :username => "karen",
+             :username => "test123",
              :email => "test@columbia.edu",
-             :password => "hello"
+             :first_name => "Test",
+             :last_name => "Test",
+             :password => "hello",
+             :password_confirmation => "hello"
            })
 end
 
 Given /^I am logged in as a user$/ do
   @current_user = User.create!({
-    :username => "karen",
+    :username => "test123",
     :email => "test@columbia.edu",
-    :password => "hello"
+    :first_name => "Test",
+    :last_name => "Test",
+    :password => "hello",
+    :password_confirmation => "hello"
   })
   login_as(@current_user, :scope => :user)
 end

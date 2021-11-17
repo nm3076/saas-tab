@@ -9,8 +9,8 @@ class WorkspacesController < ApplicationController
     end
 
     def update
-        puts "got paramaters for update workspace"
-        puts params
+        # puts "got paramaters for update workspace"
+        # puts params
         
         workspace_to_update = params[:id]
         curr_workspace = Workspace.find_by(id: workspace_to_update)
@@ -72,8 +72,8 @@ class WorkspacesController < ApplicationController
             end
         end
 
-        puts "hashmap of values to add to links table"
-        puts updated_link_inputs
+        # puts "hashmap of values to add to links table"
+        # puts updated_link_inputs
 
         updated_link_inputs.each do |k, link_groups|
             # k is group number, link_groups is hashmap with values "notes", "name", etc.
@@ -84,9 +84,9 @@ class WorkspacesController < ApplicationController
                          workspace_id: params["id"])
         end 
 
-        puts "link after database insert"
+        # puts "link after database insert"
         new_link = Link.find_by(workspace_id: params["id"])    
-        puts new_link.notes    
+        # puts new_link.notes    
         
 
         redirect_to workspace_path
