@@ -122,7 +122,7 @@ class WorkspacesController < ApplicationController
         if @workspace.present?
             @links = Link.where(workspace_id: @workspace.id)
         else
-            flash[:alert] = 'Workspace not found'
+            flash[:alert] = 'You do not have access to that workspace!'
             redirect_to root_path # or wherever you want them to go if order doesn't exist
         end
         
