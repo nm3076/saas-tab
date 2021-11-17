@@ -20,6 +20,9 @@ module NavigationHelpers
     
     when /^the Dashboard page$/ then 
       '/workspaces'
+
+    when /^the logout page$/ then 
+      ''
    
     when /^the workspace page for "(.*)"/ then
       workspace = Workspace.find_by(workspace_name: $1)

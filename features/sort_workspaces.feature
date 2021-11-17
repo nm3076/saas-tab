@@ -31,15 +31,26 @@ Background: workspaces, links, users in database
   | Colonial Cities  | 'https://maps.google.com/'     |
   | Colonial Cities  | 'https://coursera.com/'        |
 
+Scenario: Unsuccessful signin
+  Given a user visits the signin page
+  When they submit invalid signin information
+    Then they should see an error message
 
-Scenario: Login
-  Given a valid user
-  When I go to the login page
-  And I fill in "Email" with "test@columbia.edu"
-  And I fill in "Password" with "hello"
-  And I press "Log in"
-  Then I should be on the Dashboard page
-  And I should see "Add new workspace +"
+Scenario: Successful signin
+  Given a user visits the signin page
+    And the user has an account
+  When the user submits valid signin information
+    Then they should see their profile page
+    Then they should see a signout link
+
+Scenario: Successful signout
+  Given a user visits the signin page
+    And the user has an account
+  When the user submits valid signin information
+    Then they should see their profile page
+    Then they should see a signout link 
+  When they follow "Log out"
+    Then they should be on the signin page
 
 Scenario: Login + add workspace
   Given a valid user
@@ -70,8 +81,9 @@ Scenario: delete specific workspace from database
   And I press "Add to Workspaces"
   Then I should be on the Dashboard page
   And I should see "Travel"
-  Given I am on the workspace page for "Travel"
-  When I follow "Delete"
+  When I follow "Travel"
+  Then I should be on the workspace page for "Travel"
+  When I follow "Delete Workspace"
   Then I should be on the Dashboard page
   And I should not see "Travel" 
 
@@ -90,6 +102,8 @@ Scenario: return to dashboard from specific workspace
   Then I should be on the Dashboard page
   And I should see "Travel"
   When I follow "Travel"
-  Then I am on the workspace page for "Travel"
-  When I follow "Back to workspace dashboard"
+  Then I should be on the workspace page for "Travel"
+  When I follow "Back to Dashboard"
   Then I should be on the Dashboard page
+
+
