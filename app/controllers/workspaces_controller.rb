@@ -170,9 +170,9 @@ class WorkspacesController < ApplicationController
         params.require(:workspace).permit(:workspace_name)
     end
 
-    def correct_user
-        @workspace = current_user.workspaces.find_by(id: params[:id])
-        redirect_to root_url if @workspace.nil?
-    end
+    #def correct_user
+    #    @workspace = current_user.workspaces.find_by(id: params[:id])
+    #    redirect_to root_url if @workspace.nil?
+    #end
      
 end
