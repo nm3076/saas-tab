@@ -1,5 +1,5 @@
 <!--  app/views/workspaces/show.html.erb -->
-<body>
+
 <div class="workspace-title-container">
   <h2><%= @workspace.workspace_name %> Workspace</h2>
   <button id="click-to-open" value=<%= @workspace.id %> > Open All </button> 
@@ -60,7 +60,6 @@
     <%= link_to 'Cancel', workspace_path, :class => 'action-buttons' %>
   </div>
 <% end %>
-</body>
 
 <%= javascript_pack_tag 'edit_workspace_addlink' %>
 <%= javascript_pack_tag 'open_all' %>

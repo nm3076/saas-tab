@@ -21,11 +21,18 @@ RSpec.describe UsersController, type: :controller do
             :last_name => "Guo", :password => "ucla", :password_confirmation => "ucla"}}
             @created_user = User.find_by(:username => "cindyy")
             user_id = @created_user.id
-            expect(response).to be_successful
             expect(response).to redirect_to workspaces_path
             expect(flash[:success]).to match(/Welcome to the tab!/)
             User.find_by(:username  => "cindyy").destroy
         end 
+
+        it "unsuccessfully creates new user. User already exists" do
+          # create new user before testing create path
+          User.create!(:username => "rl2912", :email => "rl2912@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar")
+          # send post request to create already existing user
+          post :create, params: {:user => {:username => "rl2912", :email => "rl2912@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar"}}
+          expect(response).to render_template("new")
+        end
     end
 
     # test show specific user
