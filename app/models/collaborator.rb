@@ -1,2 +1,2 @@
-class Collaborator < ApplicationRecord
-end
+#class Collaborator < ApplicationRecord
+#end

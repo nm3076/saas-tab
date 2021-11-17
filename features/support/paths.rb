@@ -16,7 +16,13 @@ module NavigationHelpers
     when /^the (tab)?home\s?page$/ then '/workspaces'
 
     when /^the Create New Workspace page$/ then 
-      '/workspaces/new'      
+      '/workspaces/new'   
+    
+    when /^the Dashboard page$/ then 
+      '/workspaces'
+
+    when /^the logout page$/ then 
+      ''
    
     when /^the workspace page for "(.*)"/ then
       workspace = Workspace.find_by(workspace_name: $1)
