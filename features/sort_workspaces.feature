@@ -23,8 +23,16 @@ Background: workspaces, links in database
   | TA              |    'https://calendar.google.com/'     |
   | TA              |     'https://tesla.com/'              |
 
-Scenario: see all workspaces on home page
-  Given I am on the home page
+Scenario: Login
+  Given a valid user
+  When I go to the login page
+  And I fill in "Email" with "test@columbia.edu"
+  And I fill in "Password" with "hello"
+  And I press "Log in"
+  Then I should be on the Dashboard page
+
+Scenario: see all workspaces on dashboard page
+  Given I am on the dashboard page
   Then I should see all the workspaces
 
 Scenario: add workspace to database
