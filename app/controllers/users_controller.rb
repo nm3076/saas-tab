@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       if @user.save
         log_in @user
         flash[:success] = "Welcome to the tab!"
-        redirect_to @user
+        redirect_to workspaces_path
       else
         render 'new'
       end
