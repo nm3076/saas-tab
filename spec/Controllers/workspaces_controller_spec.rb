@@ -30,6 +30,7 @@ RSpec.describe WorkspacesController, type: :controller do
     end
 
 
+
     # test create workspace
     describe "create workspace" do
       it "creates workspace successfully and redirects to workspaces_path" do
@@ -65,7 +66,7 @@ RSpec.describe WorkspacesController, type: :controller do
         Workspace.find_by(:workspace_name => "PLT").destroy
       end
 
-      it "renders the index template" do
+      it "renders the show template" do
         post :create, params: {:workspace => {:workspace_name => "PLT" }}
         @all_workspaces = Workspace.all
         @made_workspace = Workspace.find_by(:workspace_name => "PLT")
