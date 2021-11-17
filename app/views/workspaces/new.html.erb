@@ -1,13 +1,13 @@
-<h2>Create New Workspace</h2>
+<body>
+    <div class="container">
+        <h2 class="display-4">Create New Workspace</h2>
 
-<%= form_tag workspaces_path , :class => 'form' do %>
-    <%= label :workspace, :workspace_name, 'Name' %>
-    <%= text_field :workspace, :workspace_name %>
-    <br/>
-    <%= submit_tag 'Add to Workspaces' %>
-    <%= link_to 'Back to Dashboard', workspaces_path %>
-<% end %>
-
-
-
-
+        <%= form_tag workspaces_path , :class => 'form' do %>
+            <%= label :workspace, :workspace_name, 'Name' %>
+            <%= text_field :workspace, :workspace_name %>
+            <br/>
+            <%= submit_tag 'Add to Workspaces' %>
+            <%= link_to 'Back to Dashboard', workspaces_path %>
+        <% end %>
+    </div>
+</body>
