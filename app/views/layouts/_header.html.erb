@@ -1,26 +1,44 @@
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/fontawesome.min.css" />
+<link rel="stylesheet" href="css/all.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+<style>
+  .navbar {
+      background-color: #9BCBEB;
+  }
 
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "root path", root_path, id: "logo" %>
+  .navbar .nav-link {
+      color: #fff;
+  }
+  
+  .navbar .navbar-brand {
+      color: #fff;
+  }
+  
+  body {
+      min-height: 110vh;
+      background-color: #4ca1af;
+  }
+</style>
+
+<header>
+<nav class="navbar navbar-expand-lg fixed-top py-3">
+<div class="container"><a href="#" class="navbar-brand text-uppercase font-weight-bold">tab</a>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
+        <li class="navbar-brand text-uppercase font-weight-bold"><%= link_to "Home", root_path %></li>
         <% if logged_in? %>
           <!--Returns CUrrent USER, mapping to path users/id -->
-          <li><%= link_to "Profile", current_user %></li>
+          <li class="navbar-brand text-uppercase font-weight-bold"><%= link_to "Profile", current_user %></li>
 
-          <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+          <li class="navbar-brand text-uppercase font-weight-bold"><%= link_to "Log out", logout_path, method: "delete" %></li>
         <% else %>
-          <li><%= link_to "Log in", login_path %></li>
+          <li class="navbar-brand text-uppercase font-weight-bold"><%= link_to "Log in", login_path %></li>
         <% end %>
       </ul>
     </nav>
   </div>
+</nav>
 </header>
-
-
-
-
-
-
