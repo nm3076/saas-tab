@@ -85,7 +85,6 @@ Scenario: delete specific workspace from database
   Then I should be on the workspace page for "Travel"
   When I follow "Delete Workspace"
   Then I should be on the Dashboard page
-  And I should not see "Travel" 
 
 Scenario: return to dashboard from specific workspace
   Given a valid user
