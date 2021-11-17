@@ -2,7 +2,7 @@ class WorkspacesController < ApplicationController
     protect_from_forgery with: :null_session
     def index
         @curr_user = current_user
-        @workspaces = Workspace.where(user_id: @curr_user.id)
+        @workspaces = @curr_user.workspaces
     end
 
     def new
@@ -92,20 +92,36 @@ class WorkspacesController < ApplicationController
         redirect_to workspace_path
     end
 
+
     def create
-        curr_user = current_user
-        @workspace = Workspace.create!(:workspace_name=> workspace_params['workspace_name'], 
-                                       :user => curr_user.email, 
-                                       :tags => "", 
-                                       :notes => "", 
-                                       :user_id => curr_user.id)
-        redirect_to workspaces_path
-    end
+        @workspace = current_user.workspaces.build(workspace_params)
+        if @workspace.save
+          flash[:success] = "Workspace created!"
+          redirect_to workspaces_path
+        else
+          redirect to root_url
+        end
+      end
+
+    #   def create
+    #     curr_user = current_user
+    #     @workspace = Workspace.create!(:workspace_name=> workspace_params['workspace_name'], 
+    #                                    :user => curr_user.email, 
+    #                                    :tags => "", 
+    #                                    :notes => "", 
+    #                                    :user_id => curr_user.id)
+    #     redirect_to workspaces_path
+    # end
 
     def show
-        id = params[:id]
-        @workspace = Workspace.find(id)
-        @links = Link.where(workspace_id: @workspace.id)
+        @workspace = current_user.workspaces.find_by(id: params[:id])
+
+        if @workspace.present?
+            @links = Link.where(workspace_id: @workspace.id)
+        else
+            flash[:alert] = 'You do not have access to that workspace!'
+            redirect_to root_path # or wherever you want them to go if order doesn't exist
+        end        
     end
 
     def destroy
@@ -120,6 +136,7 @@ class WorkspacesController < ApplicationController
         flash[:notice] = "Workspace '#{@workspace.workspace_name}' deleted."
         redirect_to workspaces_path
     end
+
 
     def add_link_to_workspace
         workspace_id = params[:id]
@@ -148,10 +165,14 @@ class WorkspacesController < ApplicationController
         return 
     end
 
-
     private 
     def workspace_params
         params.require(:workspace).permit(:workspace_name)
+    end
+
+    def correct_user
+        @workspace = current_user.workspaces.find_by(id: params[:id])
+        redirect_to root_url if @workspace.nil?
     end
      
 end
