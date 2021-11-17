@@ -12,7 +12,7 @@
 
 /* Button css */
 .workspace-title-container button{
-    border: 2px solid rgb(14, 112, 165);
+    border: 2px solid rgb(0, 145, 255);
     border-radius: 10px;
     background-color: white;
     color: black;
@@ -28,22 +28,80 @@
     transition-duration: .2s;
 }
 
-/* workspace text area CSS */
+/* workspace text area (notes) CSS */
 .workspace-textarea{
     border: none;
     border-radius: 5px;
 
     padding-left: 5px;
 
-    width: 40vw; 
+    width: 80vw; 
     height: 80px;
-}
-
-.workspace-textarea::-webkit-resizer {
-    display: none;
 }
 
 .workspace-textarea:hover{
     cursor: pointer;
     border: 2px dashed lightblue;
 }
+
+.workspace-textarea::-webkit-resizer {
+    display: none;
+}
+
+/* row styling and input styling */
+tr > td{ 
+    padding-top: 10px;
+}
+
+.workspace-input{ 
+    border: 2px solid rgb(0, 145, 255);
+    border-radius: 35px;
+
+    width: 250px;
+    height:40px; 
+    padding-left: 8px;
+    margin-right: 10px;
+
+}
+
+
+/* Bottom action buttons container */
+.workspace-form-action-container{
+    margin-top: 15px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: space-between;
+
+    width: 600px;
+}
+
+.workspace-form-action-container .action-buttons{
+    background-color:  rgb(0, 145, 255); 
+    border: none;
+    border-radius: 10px;
+    color: white;
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    height: 35px;
+
+    text-decoration: none;
+    display: flex; 
+    align-items: center;
+}
+
+
+.workspace-form-action-container .action-buttons.delete{
+    background-color:  rgb(172, 0, 40) !important; 
+}
+
+.workspace-form-action-container .action-buttons:hover{
+    transform: scale(1.03);
+    transition-property: transform;
+    transition-duration: .15s;
+}
+
+

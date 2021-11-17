@@ -1,6 +1,5 @@
 <!--  app/views/workspaces/show.html.erb -->
 
-
 <div class="workspace-title-container">
   <h2><%= @workspace.workspace_name %> Workspace</h2>
   <button id="click-to-open" value=<%= @workspace.id %> > Open All </button> 
@@ -26,22 +25,22 @@
 
           <!-- Name input --> 
           <td>
-            <input class="workspace-input" name="name-<%= l.id %>" value="<%= l.nickname %>" >
+            <input class="workspace-input" name="name-<%= l.id %>" value="<%= l.nickname %>" placeholder="Name">
           </td>
 
           <!--Link Input -->
           <td>
-            <input class="workspace-input" name="link-<%= l.id %>" value="<%= l.link %>" >
+            <input class="workspace-input" name="link-<%= l.id %>" value="<%= l.link %>" placeholder="Link">
           </td>
 
           <!--Date Created -->
           <td>
-            <input class="workspace-input" name="date-<%= l.id %>" value="<%= l.created_at %>" >
+            <input class="workspace-input" name="date-<%= l.id %>" value="<%= l.created_at %>" placeholder="Date Created">
           </td>
 
           <!--Notes For Link -->
           <td>
-            <input class="workspace-input" name="notes-<%= l.id %>" value="<%= l.notes %>" >
+            <input class="workspace-input" name="notes-<%= l.id %>" value="<%= l.notes %>" placeholder="Notes">
           </td>
 
           <td>
@@ -55,10 +54,10 @@
   </table>
 
   <div class="workspace-form-action-container">
-    <%= submit_tag 'Save changes' %>  
-    <%= link_to 'Back to workspace dashboard', workspaces_path, :class => 'btn btn-primary col-2' %>
-    <%= link_to 'Delete', workspace_path(@workspace), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
-    <%= link_to 'Cancel', workspace_path, :class => 'btn btn-primary col-2' %>
+    <%= submit_tag 'Save changes',  :class => 'action-buttons' %>  
+    <%= link_to 'Back to Dashboard', workspaces_path, :class => 'action-buttons' %>
+    <%= link_to 'Delete Workspace', workspace_path(@workspace), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'action-buttons delete' %>
+    <%= link_to 'Cancel', workspace_path, :class => 'action-buttons' %>
   </div>
 <% end %>
 
