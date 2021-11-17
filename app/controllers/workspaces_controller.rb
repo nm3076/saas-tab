@@ -97,11 +97,21 @@ class WorkspacesController < ApplicationController
         @workspace = current_user.workspaces.build(workspace_params)
         if @workspace.save
           flash[:success] = "Workspace created!"
-          redirect_to workspace_path(@workspace.id)
+          redirect_to workspaces_path
         else
           redirect to root_url
         end
       end
+
+    #   def create
+    #     curr_user = current_user
+    #     @workspace = Workspace.create!(:workspace_name=> workspace_params['workspace_name'], 
+    #                                    :user => curr_user.email, 
+    #                                    :tags => "", 
+    #                                    :notes => "", 
+    #                                    :user_id => curr_user.id)
+    #     redirect_to workspaces_path
+    # end
 
     def show
         @workspace = current_user.workspaces.find_by(id: params[:id])
@@ -111,15 +121,7 @@ class WorkspacesController < ApplicationController
         else
             flash[:alert] = 'You do not have access to that workspace!'
             redirect_to root_path # or wherever you want them to go if order doesn't exist
-        end
-        
-
-        # unless @workspace.present?
-        #     flash[:alert] = 'Workspace not found'
-        #     redirect_to root_path # or wherever you want them to go if order doesn't exist
-        # end
-        #@links = Link.where(workspace_id: @workspace.id)
-        
+        end        
     end
 
     def destroy
@@ -140,12 +142,11 @@ class WorkspacesController < ApplicationController
 
 
     def add_link_to_workspace
-        puts "server got: "
-        puts request.body.read
-        workspace = current_user.workspaces.find_by(id: params[:id])
+        workspace_id = params[:id]
+        workspace = Workspace.find(workspace_id)
         @new_link = Link.create!(:workspace_name => workspace.workspace_name, :link => params[:_json], :workspace_id => workspace.id)
 
-        redirect_to workspace_path(workspace.id)
+        redirect_to workspace_path(workspace_id)
         return 
     end
 
@@ -153,24 +154,19 @@ class WorkspacesController < ApplicationController
         id = params[:id]
         link_to_delete = Link.find(id)
         belongs_to_workspace = link_to_delete.workspace_id
-        belongs_to_workspace = current_user.workspaces.find_by(id: belongs_to_workspace)
+        belongs_to_workspace = Workspace.find(belongs_to_workspace)
         
         link_to_delete.destroy
         redirect_to workspace_path(belongs_to_workspace)
     end
 
     def open_links
-        puts "RECEIVED REQUEST: "
-        puts request.body
-        
         id = params[:id]
-        @workspace = current_user.workspaces.find_by(id: params[:id])
-        @links = Link.where(workspace_id: @workspace.id) 
-        puts "SENDING JSON DATA to browser"
+        @workspace = Workspace.find(id)
+        @links = Link.where(workspace_id: @workspace.id)
         render status: 200, json: @links
         return 
     end
-
 
     private 
     def workspace_params
