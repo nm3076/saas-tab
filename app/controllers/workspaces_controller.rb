@@ -1,7 +1,7 @@
 class WorkspacesController < ApplicationController
     protect_from_forgery with: :null_session
     def index
-        @curr_user = current_user
+        @curr_user = current_user # this is a function call that returns current user logged in
         @workspaces = Workspace.where(user_id: @curr_user.id)
     end
 

@@ -1,17 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe WorkspacesController, type: :controller do
+    include SessionsHelper
 
+    # make sure user is logged in before working with workspaces
+    before(:each) do
+      @current_user_logged_in = User.create!(:username => "rl3020", :email => "rl3020@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar")
+      log_in @current_user_logged_in
+    end
+
+    # delete the user and the login session after each 
+    after(:each) do
+      @current_user_logged_in.destroy
+      log_out
+    end
+  
     # test get index
     describe "GET #index" do
       it "returns a successful response" do
+        
         get :index
         expect(response).to be_successful
+
       end
 
       it "renders the index template" do
+
         get :index
         expect(response).to render_template("index")
+        
       end
     end
 
