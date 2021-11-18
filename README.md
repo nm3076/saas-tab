@@ -37,7 +37,7 @@
 #### On testing the program
 - The RSpec and Cucumber tests cover all models, views, and controllers - any % that may not be covered falls under JS (for adding, deleting, updating, and opening all links functionalities)
 - After discussing with the TAs (George, Chengrui, Mohar), we have not included unit-tests or testing for our JS functions (specifically: add_link_to_workspace, delete_link_from_workspace, open_links, update). According to Professor Yang's response to Piazza post @444, testing is not required for apps that use Rails and simple JS to improve UI (as we have). According to George, we do not need cucumber tests for the controller functions for this iteration (1 & 2), and do not need unit tests for these JS functions at all! However, our cucumber score is a little lower than expected due to this, but Chengrui indiciated that this was acceptable as of 11/17/2021.
-- Our joint results currently yield 94.67% coverage.
+- Our joint results currently yield 89.87% coverage.
 #### On test results
 - Joint RSpec and Cucumber coverage locally yields 94.67%. However, when deploying to heroku, there was an error to "define constant ApplicationCable::Connection, but didnt". In order to fix this, we uncommented the code in the `app/channels/application_cable/*` files. These two classes under this module `application_cable` are unused, but were left in for heroku deployment purposes.
 
