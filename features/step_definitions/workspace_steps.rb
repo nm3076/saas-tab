@@ -7,7 +7,7 @@ When /^they submit invalid signin information$/ do
 end
 
 Then /^they should see an error message$/ do
-  page.should have_selector ".alert", text: "Invalid email/password combination"
+  page.should have_selector ".alert", text: "Invalid email or password combination"
 end
 
 # Given /^I am a new, authenticated user$/ do
