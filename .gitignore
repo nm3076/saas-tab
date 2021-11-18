@@ -41,3 +41,6 @@ yarn-debug.log*
 
 # Ignore coverage subfolder
 coverage/*
+
+.DS_Store
+
