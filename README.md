@@ -35,7 +35,7 @@
 - Please disable any ad blockers on your web browser/alternatively whitelist the root host before clicking on `Open All` in the specific workspace to open all associated links
 - Please enter valid links that start with `https://www.`, `http://www.`, `http://`, or `https://` when adding new links (`Open All` only opens valid links to the browser)
 #### On testing the program
-- The RSpec and Cucumber tests cover all models, views, and controllers - any % that may not be covered falls under JS (for adding, deleting, and opening all links functionalities)
+- The RSpec and Cucumber tests cover all models, views, and controllers - any % that may not be covered falls under JS (for adding, deleting, updating, and opening all links functionalities)
 - After discussing with the TAs (George, Chengrui, Mohar), we have not included unit-tests or testing for our JS functions (specifically: add_link_to_workspace, delete_link_from_workspace, open_links, update). According to Professor Yang's response to Piazza post @444, testing is not required for apps that use Rails and simple JS to improve UI (as we have). According to George, we do not need cucumber tests for the controller functions for this iteration (1 & 2), and do not need unit tests for these JS functions at all! However, our cucumber score is a little lower than expected due to this, but Chengrui indiciated that this was acceptable as of 11/17/2021.
 - Our joint results currently yield: [ _____ ]
 #### On test results
