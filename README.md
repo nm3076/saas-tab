@@ -13,12 +13,17 @@
 
 ### Summary of Iteration 2 features (and extensions)
 - User Registration and profile creation
-- User Login
+- User Log In/Log Out functionality
+    - Created sessions to keep track of user logs
 - Password encryption and user authorization/authentication
+    - Users are only able to access their own workspaces and links
+    - Users are limited to their profile page
+    - Error checking for creating a new account and logging in: email format, unique accounts, password confirmation, etc.
 - Individual user profiles
 - User-specific workspaces and links
 - Editing and updating workspaces and content
 - Database Expansion: user table, collaborators table, more features for workspaces and links
+- Expansion of user-friendliness: improvement to front-end UI/UX
 
 **Link to Github repo**: https://github.com/nm3076/saas-tab.git <br />
 **The Relevant Branch is**: iter-2 <br />
