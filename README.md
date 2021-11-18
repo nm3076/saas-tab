@@ -11,20 +11,30 @@
 - Delete link(s) from existing workspace
 - Open all links in existing workspace
 
+### Summary of Iteration 2 features (and extensions)
+- User Registration and profile creation
+- User Login
+- Password encryption and user authorization/authentication
+- Individual user profiles
+- User-specific workspaces and links
+- Editing and updating workspaces and content
+- Database Expansion: user table, collaborators table, more features for workspaces and links
+
 **Link to Github repo**: https://github.com/nm3076/saas-tab.git <br />
-**The Relevant Branch is**: iter-1 <br />
+**The Relevant Branch is**: iter-2 <br />
 **Heroku link**: https://secure-mesa-61460.herokuapp.com/
 
 
-### Notes
+### Notes (updated as of Iteration 2)
 #### On running the program
 - Please disable any ad blockers on your web browser/alternatively whitelist the root host before clicking on `Open All` in the specific workspace to open all associated links
 - Please enter valid links that start with `https://www.`, `http://www.`, `http://`, or `https://` when adding new links (`Open All` only opens valid links to the browser)
 #### On testing the program
 - The RSpec and Cucumber tests cover all models, views, and controllers - any % that may not be covered falls under JS (for adding, deleting, and opening all links functionalities)
-- After discussing with the TAs (George, Chengrui, Mohar), we have not included unit-tests or testing for our JS functions. According to Professor Yang's response to Piazza post @444, testing is not required for apps that use Rails and simple JS to improve UI (as we have). According to George, we do not need cucumber tests for the controller functions for this iteration, and do not need unit tests for these JS functions at all!
+- After discussing with the TAs (George, Chengrui, Mohar), we have not included unit-tests or testing for our JS functions (specifically: add_link_to_workspace, delete_link_from_workspace, open_links, update). According to Professor Yang's response to Piazza post @444, testing is not required for apps that use Rails and simple JS to improve UI (as we have). According to George, we do not need cucumber tests for the controller functions for this iteration (1 & 2), and do not need unit tests for these JS functions at all! However, our cucumber score is a little lower than expected due to this, but Chengrui indiciated that this was acceptable as of 11/17/2021.
+- Our joint results currently yield: [ _____ ]
 #### On test results
-- Joint RSpec and Cucumber coverage locally yields 100% (as shown to George in OH and exists in the cucumber3 branch). However, when deploying to heroku, there was an error to "define constant ApplicationCable::Connection, but didnt". In order to fix this, we uncommented the code in the `app/channels/application_cable/*` files. These two classes under this module `application_cable` are unused, but were left in for heroku deployment purposes.
+- Joint RSpec and Cucumber coverage locally yields [ _____ ]. However, when deploying to heroku, there was an error to "define constant ApplicationCable::Connection, but didnt". In order to fix this, we uncommented the code in the `app/channels/application_cable/*` files. These two classes under this module `application_cable` are unused, but were left in for heroku deployment purposes.
 
 ## Running the program locally
 0.  `bundle install` (installs necesarry gems, etc.)
