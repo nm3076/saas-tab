@@ -138,15 +138,6 @@ class WorkspacesController < ApplicationController
     end
 
 
-    def add_link_to_workspace
-        workspace_id = params[:id]
-        workspace = Workspace.find(workspace_id)
-        @new_link = Link.create!(:workspace_name => workspace.workspace_name, :link => params[:_json], :workspace_id => workspace.id)
-
-        redirect_to workspace_path(workspace_id)
-        return 
-    end
-
     def delete_link_from_workspace
         id = params[:id]
         link_to_delete = Link.find(id)
@@ -170,9 +161,5 @@ class WorkspacesController < ApplicationController
         params.require(:workspace).permit(:workspace_name)
     end
 
-    #def correct_user
-    #    @workspace = current_user.workspaces.find_by(id: params[:id])
-    #    redirect_to root_url if @workspace.nil?
-    #end
      
 end
