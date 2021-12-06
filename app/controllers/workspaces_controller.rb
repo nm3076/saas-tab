@@ -77,11 +77,15 @@ class WorkspacesController < ApplicationController
 
         updated_link_inputs.each do |k, link_groups|
             # k is group number, link_groups is hashmap with values "notes", "name", etc.
-            Link.create!(nickname: link_groups["name"], 
-                         link: link_groups["link"], 
-                         created_at: link_groups["date"], 
-                         notes: link_groups["notes"], 
-                         workspace_id: params["id"])
+
+            if !link_groups["link"].to_s.strip.empty?
+                Link.create!(nickname: link_groups["name"], 
+                            link: link_groups["link"], 
+                            created_at: link_groups["date"], 
+                            notes: link_groups["notes"], 
+                            workspace_id: params["id"])
+            end
+            
         end 
 
         # puts "link after database insert"
@@ -152,6 +156,7 @@ class WorkspacesController < ApplicationController
         id = params[:id]
         @workspace = Workspace.find(id)
         @links = Link.where(workspace_id: @workspace.id)
+
         render status: 200, json: @links
         return 
     end

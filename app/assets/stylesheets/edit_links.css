@@ -1,16 +1,17 @@
 /* Title and button container */
-.workspace-title-container{
+.workspace-open-add-container{
 
-    min-width: fit-content; 
-    width: 450px;
+    width: 225px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Button css */
-.workspace-title-container button{
+.workspace-open-add-container button{
     border: 2px solid rgb(0, 145, 255);
     border-radius: 10px;
     background-color: white;
@@ -18,10 +19,9 @@
 
     padding-left: 8px;
     padding-right: 8px;
-
 }
 
-.workspace-title-container button:hover{
+.workspace-open-add-container button:hover{
     transform: scale(1.1);
     transition-property: transform;
     transition-duration: .2s;
@@ -48,6 +48,17 @@
 }
 
 /* row styling and input styling */
+
+th{ 
+
+    width: 250px;
+    height:40px; 
+    padding-left: 8px;
+    margin-right: 10px;
+
+}
+
+
 tr > td{ 
     padding-top: 10px;
 }

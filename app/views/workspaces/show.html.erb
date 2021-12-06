@@ -1,21 +1,22 @@
 <!--  app/views/workspaces/show.html.erb -->
 <body>
-<div class="workspace-title-container">
-  <h2><%= @workspace.workspace_name %> Workspace</h2>
+
+<h2 style="color:white;"><%= @workspace.workspace_name %> Workspace</h2>
+<div class="workspace-open-add-container">
   <button id="click-to-open" style="width:100px" value=<%= @workspace.id %> > Open All </button> 
   <button id="add-link-to-workspace" style="width:100px" value=<%= @workspace.id %>> Add Link </button>
 </div> 
 
 <%= form_tag workspace_path, :method => :patch  do %>
   <textarea class="workspace-textarea" name="workspace-overview" id="notes-section" placeholder="Write notes here. . ."><%= @workspace.notes %></textarea>
-
+  
   <table >
     <thead>
       <tr>
         <th>Name</th>
         <th>Link</th> 
-        <th>Date</th> 
         <th>Notes</th> 
+        <th>Date</th> 
       </tr>
     </thead>
 
@@ -33,14 +34,14 @@
             <input class="workspace-input" name="link-<%= l.id %>" value="<%= l.link %>" placeholder="Link">
           </td>
 
-          <!--Date Created -->
-          <td>
-            <input class="workspace-input" name="date-<%= l.id %>" value="<%= l.created_at %>" placeholder="Date Created">
-          </td>
-
           <!--Notes For Link -->
           <td>
             <input class="workspace-input" name="notes-<%= l.id %>" value="<%= l.notes %>" placeholder="Notes">
+          </td>
+
+          <!--Date Created -->
+          <td>
+            <input class="workspace-input" name="date-<%= l.id %>" value="<%= l.created_at %>" placeholder="Date Created">
           </td>
 
           <td>
