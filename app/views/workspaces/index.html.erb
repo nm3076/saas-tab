@@ -4,6 +4,15 @@
 
     <div class="add-workspace"> <h4> <%= link_to 'Add new workspace +', new_workspace_path%> </h4> </div>
 
+    <div> <h5> Tags </h5> </div>
+    <% tags = [] %>
+    <% index = 0 %>
+
+    <% @workspaces.each do |workspace| %>
+      <div> <h6> <%= tags[index] = workspace.tags if tags.exclude?(workspace.tags) %> </h6> </div>
+      <% index += 1 %>
+    <% end %>
+
     <div class="row workspace-container">
       <% @workspaces.each do |workspace| %>
           <div> <%= workspace.tags %> </div>
