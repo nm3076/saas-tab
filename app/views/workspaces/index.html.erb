@@ -6,6 +6,7 @@
 
     <div class="row workspace-container">
       <% @workspaces.each do |workspace| %>
+          <div> <%= workspace.tags %> </div>
           <div class="workspace"> <%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %> </div>
       <% end %>
     </div>
