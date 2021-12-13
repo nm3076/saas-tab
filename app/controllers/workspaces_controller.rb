@@ -3,11 +3,38 @@ class WorkspacesController < ApplicationController
     def index
         @curr_user = current_user
         @workspaces = @curr_user.workspaces
-        @tags = []
+        @all_tags = []
         index = 0
         @workspaces.each do |workspace|
-            @tags[index] = workspace.tags if @tags.exclude?(workspace.tags)
+            @all_tags[index] = workspace.tags if @all_tags.exclude?(workspace.tags)
             index += 1
+        end
+
+        if params[:tags] == nil
+            @tags_to_show = @all_tags
+        else
+            @tags_to_show = params[:tags].keys
+        end
+
+        redirect = false
+
+        if params[:tags]
+            @tags_to_show = params[:tags].keys
+            session[:tags] = params[:tags] 
+        elsif session[:tags]
+            @tags_to_show = session[:tags].keys
+            redirect = true
+        end 
+
+        @workspaces = Workspace.with_tags(@curr_user, @tags_to_show)
+
+        @tags_to_store = Hash.new
+        @tags_to_show.each do |item| 
+            @tags_to_store[item] = 1
+        end
+    
+        if redirect == true
+            redirect_to workspaces_path(:tags => @tags_to_store)
         end
 
     end
@@ -170,7 +197,7 @@ class WorkspacesController < ApplicationController
 
     private 
     def workspace_params
-        params.require(:workspace).permit(:workspace_name)
+        params.require(:workspace).permit(:workspace_name, :tags)
     end
 
      

@@ -4,8 +4,18 @@
 
     <div class="add-workspace"> <h4> <%= link_to 'Add new workspace +', new_workspace_path%> </h4> </div>
 
-    <div> <h5> Tags </h5> </div>
-    <div> <%= @tags %> </div>
+    <div> <%= @all_tags %> </div>
+
+    <%= form_tag workspaces_path, method: :get do %>
+      Tags:
+      <% @all_tags.each do |tag| %>
+        <div class="form-check  form-check-inline">
+          <%= label_tag "tags[#{tag}]", tag, class: 'form-check-label' %>
+          <%= check_box_tag "tags[#{tag}]", "1",  @tags_to_show.include?(tag), class: 'form-check-input' %>
+        </div>
+      <% end %>
+      <%= submit_tag 'Refresh', class: 'btn btn-primary' %>
+    <% end %>
 
     <div class="row workspace-container">
       <% @workspaces.each do |workspace| %>
