@@ -2,12 +2,13 @@ class WorkspacesController < ApplicationController
     protect_from_forgery with: :null_session
     def index
         @curr_user = current_user
-        @workspaces = @curr_user.workspaces
         @all_tags = []
         index = 0
-        @workspaces.each do |workspace|
-            @all_tags[index] = workspace.tags if @all_tags.exclude?(workspace.tags)
-            index += 1
+        @curr_user.workspaces.each do |workspace|
+            if @all_tags.exclude?(workspace.tags)
+                @all_tags[index] = workspace.tags
+                index += 1
+            end
         end
 
         if params[:tags] == nil
