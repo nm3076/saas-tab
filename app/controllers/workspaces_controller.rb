@@ -3,6 +3,13 @@ class WorkspacesController < ApplicationController
     def index
         @curr_user = current_user
         @workspaces = @curr_user.workspaces
+        @tags = []
+        index = 0
+        @workspaces.each do |workspace|
+            @tags[index] = workspace.tags if @tags.exclude?(workspace.tags)
+            index += 1
+        end
+
     end
 
     def new
