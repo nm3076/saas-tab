@@ -4,8 +4,6 @@
 
     <div class="add-workspace"> <h4> <%= link_to 'Add new workspace +', new_workspace_path%> </h4> </div>
 
-    <div> <%= @all_tags %> </div>
-
     <%= form_tag workspaces_path, method: :get do %>
       Tags:
       <% @all_tags.each do |tag| %>
@@ -19,7 +17,7 @@
 
     <div class="row workspace-container">
       <% @workspaces.each do |workspace| %>
-          <div> <%= workspace.tags %> </div>
+          <div> Tag: <%= workspace.tags %> </div>
           <div class="workspace"> <%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %> </div>
       <% end %>
     </div>

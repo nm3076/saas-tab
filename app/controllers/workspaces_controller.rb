@@ -4,7 +4,9 @@ class WorkspacesController < ApplicationController
         @curr_user = current_user
         @all_tags = []
         index = 0
+
         @curr_user.workspaces.each do |workspace|
+            workspace.user = current_user.email
             if @all_tags.exclude?(workspace.tags)
                 @all_tags[index] = workspace.tags
                 index += 1
@@ -27,7 +29,14 @@ class WorkspacesController < ApplicationController
             redirect = true
         end 
 
-        @workspaces = Workspace.with_tags(@curr_user, @tags_to_show)
+        @workspaces = []
+        new_index = 0
+        @curr_user.workspaces.each do |workspace|
+            if @tags_to_show.include?(workspace.tags)
+                @workspaces[new_index] = workspace
+                new_index += 1
+            end
+        end
 
         @tags_to_store = Hash.new
         @tags_to_show.each do |item| 
@@ -198,7 +207,7 @@ class WorkspacesController < ApplicationController
 
     private 
     def workspace_params
-        params.require(:workspace).permit(:workspace_name, :tags)
+        params.require(:workspace).permit(:workspace_name, :tags, :user)
     end
 
      
