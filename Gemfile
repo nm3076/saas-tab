@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'cucumber'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem "bootstrap_form", "~> 5.0"
 
 gem 'rails-controller-testing'
 gem 'devise'
