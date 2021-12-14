@@ -1,15 +1,11 @@
 class WorkspacesController < ApplicationController
     protect_from_forgery with: :null_session
-    #before_action :set_workspace, only: [:show, :edit, :update, :destroy]
     def index
         @curr_user = current_user
-        #@workspaces = @curr_user.workspaces
-        @workspaces = current_user.workspaces
+        @workspaces = @curr_user.workspaces
     end
 
     def new
-        # @workspace = Workspace.new
-        # @workspace.links.build
     end
 
     def update
@@ -102,18 +98,26 @@ class WorkspacesController < ApplicationController
 
 
     def create
-        #@workspace = current_user.workspaces.build(workspace_params)
-        @workspace = Workspace.new(workspace_params)
-        @workspace.collaborations.build(:user_id => current_user.id, :role => "Primary Project Owner")
+        @workspace = current_user.workspaces.build(workspace_params)
+        #@workspaces = Worskpace.new
+        @workspace.collaborations.build(:user_id => current_user.id, :role => "Primary Project Owner")        
         if @workspace.save
           flash[:success] = "Workspace created!"
           redirect_to workspaces_path
         else
           redirect_to root_url
-          #render :new
         end
       end
 
+    #   def create
+    #     curr_user = current_user
+    #     @workspace = Workspace.create!(:workspace_name=> workspace_params['workspace_name'], 
+    #                                    :user => curr_user.email, 
+    #                                    :tags => "", 
+    #                                    :notes => "", 
+    #                                    :user_id => curr_user.id)
+    #     redirect_to workspaces_path
+    # end
 
     def show
         @workspace = current_user.workspaces.find_by(id: params[:id])
@@ -123,12 +127,7 @@ class WorkspacesController < ApplicationController
         else
             flash[:alert] = 'You do not have access to that workspace!'
             redirect_to root_path # or wherever you want them to go if order doesn't exist
-        end    
-        block_access_if_not_collaborator    
-    end
-
-    def edit
-        block_access_if_not_primary_owner
+        end        
     end
 
     def destroy
@@ -166,25 +165,7 @@ class WorkspacesController < ApplicationController
 
     private 
     def workspace_params
-        params.require(:workspace).permit(:workspace_name)
-    end
-
-    def set_workspace
-        @workspace = Workspace.find(params[:id])
-    end
-
-    def block_access_if_not_primary_owner
-        if !current_user.workspaces.primary_owner.include?(@workspace)
-            redirect_to root_path, alert: "You may only edit or delete a project if you are the Primary Project Owner."
-            return
-        end
-    end
-
-    def block_access_if_not_collaborator
-        if !current_user.workspaces.collaborator_of_any_kind.include?(@workspace)
-            redirect_to root_path, alert: "You may only view this page if you are a Project Collaborator."
-            return
-        end
+        params.require(:workspace).permit(:workspace_name, :tags, :user)
     end
 
      

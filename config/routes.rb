@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'static_pages/help'
   get 'sessions/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root :to => 'workspaces#index'
+  root :to => 'sessions#new'
 
   resources :workspaces
   resources :users

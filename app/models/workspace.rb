@@ -1,12 +1,12 @@
 class Workspace < ApplicationRecord
     has_many :collaborations
     has_many :users, through: :collaborations
-    has_many :links, dependent: :destroy
-    validates :user_id, presence: true
+    #has_many :links, dependent: :destroy
+    #validates :user_id, presence: true
     #foreign_key: :workspace_name
 
     #accepts_nested_attributes_for :goals, reject_if: proc { |attributes| attributes['title'].blank? || attributes['description'].blank? || attributes['budget'].blank? || attributes['status'].blank? }
-    accepts_nested_attributes_for :collaborations
+    #accepts_nested_attributes_for :collaborations
 
     # returns the array of projects in which user is any role except view_only
     def self.primary_or_owner_or_update
