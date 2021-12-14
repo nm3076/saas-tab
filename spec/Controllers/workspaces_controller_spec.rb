@@ -240,12 +240,12 @@ RSpec.describe WorkspacesController, type: :controller do
     end
 
     # Test if collaborator is working properly
-    describe "testing instance of appliation job class" do
-      it "is class created for application job" do
-        collab = Collaborator.new 
-        expect(collab).to be_instance_of(Collaborator)
-      end
-    end
+    # describe "testing instance of appliation job class" do
+    #   it "is class created for application job" do
+    #     collab = Collaborator.new 
+    #     expect(collab).to be_instance_of(Collaborator)
+    #   end
+    # end
 
 
 end

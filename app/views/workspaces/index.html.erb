@@ -1,13 +1,68 @@
-<body>  
-  <div class="container">
-    <h2 class="display-4"> <%= @curr_user.first_name %>'s workspaces </h2>
+<div class="row">
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-body">
 
-    <div class="add-workspace"> <h4> <%= link_to 'Add new workspace +', new_workspace_path%> </h4> </div>
+                <h1><%= @curr_user.username %>'s Workspaces and Collaborations</h1>
+                <h1><%= @curr_user.id %>'s Workspaces and Collaborations</h1>
+                <%= button_to "Create A New Workspaces", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %><br>
 
-    <div class="row workspace-container">
-      <% @workspaces.each do |workspace| %>
-          <div class="workspace"> <%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %> </div>
-      <% end %>
+            </div>
+        </div>
     </div>
-  </div>
-</body>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+
+            <div class="card-header">
+                <h3> Workspaces I Own </h3>
+            </div>
+
+            <div class="card-body">
+
+            <% current_user.workspaces.primary_or_owner.each do |workspace| %>
+                <div class="workspace"> <%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %> </div>
+            <% end %>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-4">
+        <div class="card">
+            
+            <div class="card-header">
+                <h3> Workspaces I Can Update </h3>
+            </div>
+
+            <div class="card-body">
+
+                <% current_user.workspaces.update_and_view.each do |p| %>
+                    <ul>
+                    <%= render "workspace_link", {p: p} %> 
+                    </ul>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+        
+            <div class="card-header">
+                <h3> Workspaces I Can View </h3>
+            </div>
+
+            <div class="card-body">
+
+                <% current_user.workspaces.view_only.each do |p| %>
+                    <ul>
+                    <%= render "workspace_link", {p: p} %> 
+                    </ul>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>  
