@@ -2,7 +2,51 @@ class WorkspacesController < ApplicationController
     protect_from_forgery with: :null_session
     def index
         @curr_user = current_user
-        @workspaces = @curr_user.workspaces
+        @all_tags = []
+        index = 0
+
+        @curr_user.workspaces.each do |workspace|
+            workspace.user = current_user.email
+            if @all_tags.exclude?(workspace.tags)
+                @all_tags[index] = workspace.tags
+                index += 1
+            end
+        end
+
+        if params[:tags] == nil
+            @tags_to_show = @all_tags
+        else
+            @tags_to_show = params[:tags].keys
+        end
+
+        redirect = false
+
+        if params[:tags]
+            @tags_to_show = params[:tags].keys
+            session[:tags] = params[:tags] 
+        elsif session[:tags]
+            @tags_to_show = session[:tags].keys
+            redirect = true
+        end 
+
+        @workspaces = []
+        new_index = 0
+        @curr_user.workspaces.each do |workspace|
+            if @tags_to_show.include?(workspace.tags)
+                @workspaces[new_index] = workspace
+                new_index += 1
+            end
+        end
+
+        @tags_to_store = Hash.new
+        @tags_to_show.each do |item| 
+            @tags_to_store[item] = 1
+        end
+    
+        if redirect == true
+            redirect_to workspaces_path(:tags => @tags_to_store)
+        end
+
     end
 
     def new

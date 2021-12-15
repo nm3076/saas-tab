@@ -4,7 +4,7 @@ class Workspace < ApplicationRecord
     #has_many :links, dependent: :destroy
     #validates :user_id, presence: true
     #foreign_key: :workspace_name
-
+  
     #accepts_nested_attributes_for :goals, reject_if: proc { |attributes| attributes['title'].blank? || attributes['description'].blank? || attributes['budget'].blank? || attributes['status'].blank? }
     #accepts_nested_attributes_for :collaborations
 
@@ -42,4 +42,5 @@ class Workspace < ApplicationRecord
     def self.primary_or_owner 
         primary_owner + owner
     end
+
 end

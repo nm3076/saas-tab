@@ -6,6 +6,9 @@
             <%= label :workspace, :workspace_name, 'Name' %>
             <%= text_field :workspace, :workspace_name %>
             <br/>
+            <%= label :workspace, :tags, 'Tag' %>
+            <%= text_field :workspace, :tags %>
+            <br/>
             <%= submit_tag 'Add to Workspaces' %>
             <%= link_to 'Back to Dashboard', workspaces_path %>
         <% end %>

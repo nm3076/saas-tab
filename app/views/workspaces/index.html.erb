@@ -6,8 +6,27 @@
                 <h1><%= @curr_user.username %>'s Workspaces and Collaborations</h1>
                 <%= button_to "Create A New Workspaces", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %><br>
 
+
+    <%= form_tag workspaces_path, method: :get do %>
+      Tags:
+      <% @all_tags.each do |tag| %>
+        <div class="form-check  form-check-inline">
+          <%= label_tag "tags[#{tag}]", tag, class: 'form-check-label' %>
+          <%= check_box_tag "tags[#{tag}]", "1",  @tags_to_show.include?(tag), class: 'form-check-input' %>
+        </div>
+      <% end %>
+      <%= submit_tag 'Refresh', class: 'btn btn-primary' %>
+    <% end %>
+
+    <div class="row workspace-container">
+      <% @workspaces.each do |workspace| %>
+          <div> Tag: <%= workspace.tags %> </div>
+          <div class="workspace"> <%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %> </div>
+      <% end %>
+
             </div>
         </div>
+
     </div>
 </div>
 
