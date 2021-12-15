@@ -40,7 +40,7 @@
 
             <div class="card-body">
 
-            <% @workspaces.primary_or_owner.each do |workspace| %>
+            <% current_user.workspaces.primary_or_owner.each do |workspace| %>
                 <div class="workspace"> <%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %> </div>
             <% end %>
             </div>
