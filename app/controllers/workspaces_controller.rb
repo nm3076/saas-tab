@@ -143,11 +143,13 @@ class WorkspacesController < ApplicationController
 
     def create
         @workspace = current_user.workspaces.build(workspace_params)
+        #@workspaces = Worskpace.new
+        @workspace.collaborations.build(:user_id => current_user.id, :role => "Primary Project Owner")        
         if @workspace.save
           flash[:success] = "Workspace created!"
           redirect_to workspaces_path
         else
-          redirect to root_url
+          redirect_to root_url
         end
       end
 

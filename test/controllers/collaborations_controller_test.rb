@@ -1,6 +1,6 @@
 require "test_helper"
 
-class CollaboratorTest < ActiveSupport::TestCase
+class CollaborationsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

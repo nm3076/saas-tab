@@ -1,6 +1,5 @@
 <!--  app/views/workspaces/show.html.erb -->
 <body>
-
 <h2 style="color:white;"><%= @workspace.workspace_name %> Workspace</h2>
 <div class="workspace-open-add-container">
   <button id="click-to-open" style="width:100px" value=<%= @workspace.id %> > Open All </button> 
@@ -46,7 +45,8 @@
 
           <td>
             <%= link_to 'Delete Link', delete_link_from_workspace_path(l.id), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?' %>
-          </td>  
+          </td> 
+
 
         </tr>
 
@@ -59,6 +59,7 @@
     <%= link_to 'Back to Dashboard', workspaces_path, :class => 'action-buttons' %>
     <%= link_to 'Delete Workspace', workspace_path(@workspace), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'action-buttons delete' %>
     <%= link_to 'Cancel', workspace_path, :class => 'action-buttons' %>
+    <%= link_to 'Edit Collaborators', new_collaboration_path, 'data-method' => 'get', :class => 'action-buttons' %>
   </div>
 <% end %>
 </body>

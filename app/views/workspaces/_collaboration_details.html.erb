@@ -1,0 +1,26 @@
+<% @workspace.collaborations.not_primary_owner.each do |collaboration| %>
+    <div class="card">
+        <div class="card-body">                   
+            <%= collaboration.user.username %> - <%= collaboration.role %><br>
+
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+                <% if current_user.workspaces.primary_owner.include?(@workspace) %>
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <%= button_to "Edit Collaboration Details", edit_collaboration_path(collaboration), method: "get", :class => "btn btn-outline-primary"  %>
+                    </div>
+                    
+                    <div class="btn-group mr-2" role="group" aria-label="Second group">
+                        <%= form_with(url: collaboration_path(collaboration), method: 'delete') do |f| %>
+                            <%= f.hidden_field :project_id, :value => params[:project_id] %>
+                            <%= f.submit "Delete Collaboration", :class => "btn btn-outline-danger" %><br>
+                        <% end %>
+                    </div>
+
+                <% end %>
+
+            </div>
+
+        </div>
+    </div>
+<% end %>
