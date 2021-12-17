@@ -4,10 +4,10 @@
 
         <%= form_tag workspaces_path , :class => 'form' do %>
             <%= label :workspace, :workspace_name, 'Name' %>
-            <%= text_field :workspace, :workspace_name %>
+            <%= text_field :workspace, :workspace_name, :required => true %>
             <br/>
             <%= label :workspace, :tags, 'Tag' %>
-            <%= text_field :workspace, :tags %>
+            <%= text_field :workspace, :tags, :required => true %>
             <br/>
             <%= submit_tag 'Add to Workspaces' %>
             <%= link_to 'Back to Dashboard', workspaces_path %>

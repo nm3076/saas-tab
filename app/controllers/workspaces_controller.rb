@@ -21,14 +21,6 @@ class WorkspacesController < ApplicationController
 
         redirect = false
 
-        if params[:tags]
-            @tags_to_show = params[:tags].keys
-            session[:tags] = params[:tags] 
-        elsif session[:tags]
-            @tags_to_show = session[:tags].keys
-            redirect = true
-        end 
-
         @workspaces = []
         new_index = 0
         @curr_user.workspaces.each do |workspace|

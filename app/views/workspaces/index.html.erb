@@ -4,7 +4,7 @@
             <div class="card-body">
 
                 <h1><%= @curr_user.username %>'s Workspaces and Collaborations</h1>
-                <%= button_to "Create A New Workspaces", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %><br>
+                <%= button_to "Create A New Workspace", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %><br>
 
 
     <%= form_tag workspaces_path, method: :get do %>
