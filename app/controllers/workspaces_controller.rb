@@ -19,8 +19,6 @@ class WorkspacesController < ApplicationController
             @tags_to_show = params[:tags].keys
         end
 
-        redirect = false
-
         @workspaces = []
         new_index = 0
         @curr_user.workspaces.each do |workspace|
@@ -34,10 +32,7 @@ class WorkspacesController < ApplicationController
         @tags_to_show.each do |item| 
             @tags_to_store[item] = 1
         end
-    
-        if redirect == true
-            redirect_to workspaces_path(:tags => @tags_to_store)
-        end
+
 
     end
 

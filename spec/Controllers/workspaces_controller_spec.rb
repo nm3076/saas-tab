@@ -44,12 +44,14 @@ RSpec.describe WorkspacesController, type: :controller do
 
         Workspace.find_by(:workspace_name => "Genes").destroy
       end 
+
+      it "render tags based on params" do
+        get :index, params: { :tags => {"school": 1} }
+        expect(response).to render_template("index")
+      end
     end
 
-    it "render tags based on params" do
-      get :index, params: { :tags => {"school": 1} }
-      expect(response).to render_template("index")
-    end
+
 
     #test get new view
     describe "GET #new" do
@@ -110,6 +112,11 @@ RSpec.describe WorkspacesController, type: :controller do
         expect(response).to render_template("show")
         Workspace.find_by(:workspace_name => "PLT").destroy
       end
+
+      it "Prevents showing workspace not owned by user" do
+        get :show, params: {:id => 1}
+        expect(response).to redirect_to root_path
+      end 
 
     end
 

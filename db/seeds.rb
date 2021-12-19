@@ -22,7 +22,7 @@ tag1 = Tag.create!(:name => "Classes")
 tag2 = Tag.create!(:name => "Research")
 tag3 = Tag.create!(:name => "TA")
 
-workspace1 = Workspace.create(:workspace_name=> "SaaS", :user => user1.email, :tags => "Classes", :notes => "Engineering Software as a Service", :user_id => user1.id)
+workspace1 = Workspace.create!(:workspace_name=> "SaaS", :user => user1.email, :tags => "Classes", :notes => "Engineering Software as a Service", :user_id => user1.id)
 workspace2 = Workspace.create(:workspace_name=> "MBC", :user => user2.email, :tags => "Classes", :notes => "Making, Breaking Codes", :user_id => user2.id)
 workspace3 = Workspace.create(:workspace_name=> "History Lab", :user => user3.email, :tags => "Research", :notes => "NLP and Computer Vision", :user_id => user3.id)
 workspace4 = Workspace.create(:workspace_name=> "Intro to Python", :user => user2.email, :tags => "TA", :notes => "Scheduling and Drive", :user_id => user2.id)

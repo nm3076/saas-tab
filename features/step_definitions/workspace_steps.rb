@@ -2,6 +2,14 @@ Given /^a user visits the signin page$/ do
   visit root_path
 end
 
+Given /^a user visits the signup page$/ do
+  visit new_user_path
+end
+
+Given /^I visit the signup page$/ do
+  visit new_user_path
+end
+
 When /^they submit invalid signin information$/ do
   click_button "Log in"
 end
@@ -10,17 +18,6 @@ Then /^they should see an error message$/ do
   page.should have_selector ".alert", text: "Invalid email or password combination"
 end
 
-# Given /^I am a new, authenticated user$/ do
-#   email = 'test@columbia.edu'
-#   password = 'hello'
-
-#   visit ''
-#   fill_in "Email", :with => email
-#   fill_in "Password", :with => password
-#   click_button "Log in"
-#   # expect(page).to have_text("You are now logged in") # or whatever message is displayed to indicate successfull login - if using RSpec
-#   # page.assert_text("You are now logged in") # if not using RSpec
-# end
 
 Given /^the user has an account$/ do
   @user = User.create(username: "test123", email: "test@columbia.edu",
@@ -34,6 +31,7 @@ When /^the user submits valid signin information$/ do
   click_button "Log in"
   visit workspaces_path
 end
+
 
 Then /^they should see their profile page$/ do
   page.should have_selector('h1', text: @user.username)
@@ -57,6 +55,10 @@ Given /^a valid user$/ do
              :password => "hello",
              :password_confirmation => "hello"
            })
+
+  workspace1 = Workspace.create(:workspace_name=> "Genes", :user => @user.email, :tags => "Classes", :notes => "test", :user_id => @user.id)
+  Link.create(:workspace_name => workspace1.workspace_name, :link => 'https://tesla.com/', :workspace_id => workspace1.id)
+
 end
 
 Given /^I am logged in as a user$/ do
@@ -91,6 +93,8 @@ Given /the following links exist/ do |links_table|
   links_table.hashes.each do |link|
     Link.create link
   end
+
+
 end
 
 Then /I should see all the workspaces/ do
@@ -109,3 +113,17 @@ Then /I should not see the "(.*)" link/ do |l|
   # Make sure that you see the relevant links for a workspace
   !expect(page.body) =~ l
 end
+
+# COMMANDS SPECIFIC TO CHECKING EDIT WORKSPACES and LINKS
+
+Then /^they should see a text area to update the newly created link$/ do
+  page.should have_selector('input')
+end
+
+When /^I add details for the newly created link$/ do
+  
+  fill_in "Link-Input", with: "https://www.tesla.com/"
+  #fill_in "Notes-Input", with: "the dream"
+end
+
+
