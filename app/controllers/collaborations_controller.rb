@@ -9,7 +9,9 @@ class CollaborationsController < ApplicationController
 
     def create
         @collaboration = Collaboration.new(collaboration_params)
+        puts @collaboration.save(validate: true)
         if @collaboration.save
+            Kernel.puts "Hello "
             redirect_to workspace_path(@collaboration.workspace)
         else
             render :new
