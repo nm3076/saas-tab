@@ -5,7 +5,7 @@ RSpec.describe WorkspacesController, type: :controller do
 
     # make sure user is logged in before working with workspaces
     before(:each) do
-      @current_user_logged_in = User.create!(:username => "rl3020", :email => "rl3020@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar")
+      @current_user_logged_in = User.create!(:username => "rl3020", :email => "rl3020@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar" )
       log_in @current_user_logged_in
     end
 
@@ -18,18 +18,31 @@ RSpec.describe WorkspacesController, type: :controller do
     # test get index
     describe "GET #index" do
       it "returns a successful response" do
-        
         get :index
         expect(response).to be_successful
-
       end
 
       it "renders the index template" do
-
         get :index
         expect(response).to render_template("index")
-        
       end
+
+      # TEST LOADING TAGS 
+      it "loads all tags belonging to workspace" do 
+        Workspace.create!(:workspace_name => "Genomics" , :tags => "school", :user_id => @current_user_logged_in.id )
+        
+        Kernel.puts "workspaces for user logged in"
+        @current_user_logged_in.workspaces do |work|
+          Kernel.puts work.workspace_name
+        end
+
+        #Kernel.puts Workspace.find_by(:workspace_name => "Genomics").tags
+
+        get :index 
+        expect(response).to render_template("index")
+
+        Workspace.find_by(:workspace_name => "Genomics").destroy
+      end 
     end
 
     #test get new view
@@ -44,6 +57,7 @@ RSpec.describe WorkspacesController, type: :controller do
         expect(response).to render_template("new")
       end
     end
+
 
     # test create workspace
     describe "create workspace" do
@@ -111,8 +125,6 @@ RSpec.describe WorkspacesController, type: :controller do
       end
     end
 
-
-
     # ADD multiple links to workspace test
     describe "add link to workspace" do
       it "successfully add links to a workspace" do
@@ -161,12 +173,6 @@ RSpec.describe WorkspacesController, type: :controller do
 
       end
     end
-
-
-
-
-
-
 
     # remove link from workspace test
     describe "destroy link in workspace" do
@@ -244,6 +250,7 @@ RSpec.describe WorkspacesController, type: :controller do
     #     expect(collab).to be_instance_of(Collaborator)
     #   end
     # end
+
 
 
 end
