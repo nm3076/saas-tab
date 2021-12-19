@@ -29,20 +29,26 @@ RSpec.describe WorkspacesController, type: :controller do
 
       # TEST LOADING TAGS 
       it "loads all tags belonging to workspace" do 
-        Workspace.create!(:workspace_name => "Genomics" , :tags => "school", :user_id => @current_user_logged_in.id )
-        
-        Kernel.puts "workspaces for user logged in"
-        @current_user_logged_in.workspaces do |work|
-          Kernel.puts work.workspace_name
-        end
-
-        #Kernel.puts Workspace.find_by(:workspace_name => "Genomics").tags
+        post :create, params: { :workspace => {:user => @current_user_logged_in.email , :workspace_name => "Genes", :tags => "school-stuff"}}
 
         get :index 
         expect(response).to render_template("index")
+        correct = true 
+        @current_user_logged_in.workspaces.each do |work|
+          if !work.workspace_name.include? "Genes"
+            correct = false 
+          end 
+        end 
 
-        Workspace.find_by(:workspace_name => "Genomics").destroy
+        expect(correct).to be true 
+
+        Workspace.find_by(:workspace_name => "Genes").destroy
       end 
+    end
+
+    it "render tags based on params" do
+      get :index, params: { :tags => {"school": 1} }
+      expect(response).to render_template("index")
     end
 
     #test get new view

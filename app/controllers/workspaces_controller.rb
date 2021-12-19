@@ -145,16 +145,6 @@ class WorkspacesController < ApplicationController
         end
       end
 
-    #   def create
-    #     curr_user = current_user
-    #     @workspace = Workspace.create!(:workspace_name=> workspace_params['workspace_name'], 
-    #                                    :user => curr_user.email, 
-    #                                    :tags => "", 
-    #                                    :notes => "", 
-    #                                    :user_id => curr_user.id)
-    #     redirect_to workspaces_path
-    # end
-
     def show
         @workspace = current_user.workspaces.find_by(id: params[:id])
 
