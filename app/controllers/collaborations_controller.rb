@@ -27,10 +27,10 @@ class CollaborationsController < ApplicationController
         end
     end
 
-    def destroy
-        @collaboration.delete
-        redirect_to workspace_path(@collaboration.workspace)
-    end
+    # def destroy
+    #     @collaboration.delete
+    #     redirect_to workspace_path(@collaboration.workspace)
+    # end
 
     private
     

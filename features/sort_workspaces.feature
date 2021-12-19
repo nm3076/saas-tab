@@ -199,3 +199,27 @@ Scenario: open all links from workspace
   Then I should be on the workspace page for "Genes"
   And I press "Open All"
   Then I should be on the workspace page for "Genes"
+
+# CREATE COLLABORATION STORIES
+Scenario: open all links from workspace
+  Given a valid user
+  When I go to the login page
+  And I fill in "Email" with "test@columbia.edu"
+  And I fill in "Password" with "hello"
+  And I press "Log in"
+  Then I should be on the Dashboard page
+  And I should see "Share A Workspace"
+  When I follow "Share A Workspace" 
+  And I should see "User"
+  And I should see "Role"
+  And I should see "Workspace"
+  When I select "nm3076" from "collaboration_user_id"
+  When I select "Update and View" from "collaboration_role"
+  When I select "Genes" from "collaboration_workspace_id"
+  And I press "Create Collaboration"
+  Then I should be on the workspace page for "Genes"
+
+
+
+
+

@@ -128,8 +128,12 @@ end
 
 When /^I add details for the links to update$/ do
   page.find('input', :match => :first).fill_in with: "whacky"
-  #fill_in "Link-Input", with: "https://www.tesla.com/"
-  #fill_in "Notes-Input", with: "the dream"
 end
 
+# COMMANDS TO SELECT COLLABORATOR 
+# When /^I choose a collaborator$/ do
+#   select "nm3076" , :from => "collaboration_user_id"
+#   select "Update and View" , :from => "collaboration_role"
+#   select "Genes" , :from => "collaboration_workspace_id"
+# end
 
