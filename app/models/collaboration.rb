@@ -8,12 +8,12 @@ class Collaboration < ApplicationRecord
     validates :role, presence: true, inclusion: ROLE_OPTIONS
 
     # returns array of collaborations in which the (current) user is Primary Project Owner
-    def self.primary_owner
-        where('role = ?', "Primary Project Owner")
-    end
+    #def self.primary_owner
+    #    where('role = ?', "Primary Project Owner")
+    #end
 
     # returns array of collaborations in which the (current) user is Primary Project Owner
-    def self.not_primary_owner
-        where.not('role = ?', "Primary Project Owner")
-    end
+    #def self.not_primary_owner
+    #    where.not('role = ?', "Primary Project Owner")
+    #end
 end

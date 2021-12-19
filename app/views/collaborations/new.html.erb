@@ -10,7 +10,7 @@
               
                 <%= f.select  :role, [["Project Owner", "Project Owner"], ["Update and View", "Update and View"]], :prompt => true %><br>
                 
-                <%= f.collection_select :workspace_id, current_user.workspaces.primary_owner, :id, :workspace_name %><br>
+                <%= f.collection_select :workspace_id, current_user.workspaces.primary_or_owner, :id, :workspace_name %><br>
 
                 <%= f.submit nil, class: 'btn btn-secondary' %>
             <% end %>

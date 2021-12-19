@@ -45,7 +45,7 @@
 
             <div class="card-body">
 
-                <% current_user.workspaces.update_and_view.each do |p| %>
+                <% current_user.workspaces.update_and_view_or_owner.each do |p| %>
                     <ul>
                     <%= render "workspace_link", {p: p} %> 
                     </ul>

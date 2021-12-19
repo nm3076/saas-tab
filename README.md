@@ -43,7 +43,7 @@
     - Users select a role for other users when creating a collaboration: "Project Owner" or "Update and View"
         - Users with "Project Owner" access can edit the workspace and share the workspace with other users
         - Users with "Update and View" access can only edit the workspace
-    - Updated dashboard for "Workspaces Shared With Me" to include workspaces that have been shared with the user via "Update and View" access
+    - Updated dashboard for "Workspaces Shared With Me" to include workspaces that have been shared with the user
 - Database expansion: collaboration table
 - Expansion of user-friendliness: improvement to front-end UI/UX
 
