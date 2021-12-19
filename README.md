@@ -10,7 +10,7 @@
 - Seamless organization to filter workspaces by tags
 - Simple and intuititve user interface
 - One click automation to open links in a workspace
-<br /> <br />
+<br />
 
 ### Summary of Iteration 1 features
 - Dashboard to view all existing workspaces
@@ -47,7 +47,7 @@
 - Database expansion: collaboration table
 - Expansion of user-friendliness: improvement to front-end UI/UX
 
-
+<br />
 **Link to Github repo**: https://github.com/nm3076/saas-tab.git <br />
 **The Relevant Branch is**: proj-launch <br />
 **Heroku link**: https://secure-mesa-61460.herokuapp.com/ <br />
