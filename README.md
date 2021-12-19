@@ -33,7 +33,8 @@
 - Expansion of user-friendliness: improvement to front-end UI/UX
 
 ### Summary of Project Launch features (and extensions)
-- Individual user profiles: profile card, list of existing workspaces
+- Individual user profiles
+    - Profile card, list of existing workspaces
 - Tags
     - Users can create tags for their workspaces
     - Users can filter by tag to better organize their workspaces
