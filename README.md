@@ -46,7 +46,6 @@
 - Database expansion: collaboration table
 - Expansion of user-friendliness: improvement to front-end UI/UX
 
-<br />
 **Link to Github repo**: https://github.com/nm3076/saas-tab.git <br />
 **The Relevant Branch is**: proj-launch <br />
 **Heroku link**: https://secure-mesa-61460.herokuapp.com/ <br />
