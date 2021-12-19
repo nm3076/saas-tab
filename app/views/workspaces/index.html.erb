@@ -5,8 +5,8 @@
             <h1><%= @curr_user.username %>'s Workspaces and Collaborations</h1>
         </div>
             <div class="card-body"> 
-                <%= link_to "Create A New Workspace", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %><br>
-
+                <%= link_to "Create A New Workspace", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %>
+                <%= link_to 'Share A Workspace', new_collaboration_path, 'data-method' => 'get', :class => "btn btn-outline-primary" %><br>
 
     <%= form_tag workspaces_path, method: :get do %>
       Tags:
