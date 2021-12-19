@@ -10,7 +10,6 @@
 - Seamless organization to filter workspaces by tags
 - Simple and intuititve user interface
 - One click automation to open links in a workspace
-<br />
 
 ### Summary of Iteration 1 features
 - Dashboard to view all existing workspaces
@@ -52,7 +51,7 @@
 **The Relevant Branch is**: proj-launch <br />
 **Heroku link**: https://secure-mesa-61460.herokuapp.com/ <br />
 **Link to Project Demo video**: https://www.youtube.com/watch?v=J23djb0s-j4 
-
+<br />
 
 ### Notes (updated as of Project Launch)
 #### On running the program
