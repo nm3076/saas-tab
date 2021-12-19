@@ -18,31 +18,32 @@ user5 = User.create!(:username => "bs1212", :email => "bs1212@columbia.edu", :fi
 user6 = User.create!(:username => "ms6174", :email => "ms6174@columbia.edu", :first_name => "Mary", :last_name => "Smith", password: "foobar", password_confirmation: "foobar")
 
 
-tag1 = Tag.create!(:name => "Classes")
-tag2 = Tag.create!(:name => "Research")
-tag3 = Tag.create!(:name => "TA")
-
 workspace1 = Workspace.create!(:workspace_name=> "SaaS", :user => user1.email, :tags => "Classes", :notes => "Engineering Software as a Service", :user_id => user1.id)
-workspace2 = Workspace.create(:workspace_name=> "MBC", :user => user2.email, :tags => "Classes", :notes => "Making, Breaking Codes", :user_id => user2.id)
-workspace3 = Workspace.create(:workspace_name=> "History Lab", :user => user3.email, :tags => "Research", :notes => "NLP and Computer Vision", :user_id => user3.id)
-workspace4 = Workspace.create(:workspace_name=> "Intro to Python", :user => user2.email, :tags => "TA", :notes => "Scheduling and Drive", :user_id => user2.id)
-workspace5 = Workspace.create(:workspace_name=> "Colonial Cities", :user => user3.email, :tags => "Classes", :notes => "Colonial Cities of the Americas", :user_id => user3.id)
-workspace6 = Workspace.create(:workspace_name=> "UI Design", :user => user2.email, :tags => "Classes", :notes => "User Interface Design", :user_id => user2.id)
+workspace2 = Workspace.create!(:workspace_name=> "MBC", :user => user2.email, :tags => "Classes", :notes => "Making, Breaking Codes", :user_id => user2.id)
+workspace3 = Workspace.create!(:workspace_name=> "History Lab", :user => user3.email, :tags => "Research", :notes => "NLP and Computer Vision", :user_id => user3.id)
+workspace4 = Workspace.create!(:workspace_name=> "Intro to Python", :user => user2.email, :tags => "TA", :notes => "Scheduling and Drive", :user_id => user2.id)
+workspace5 = Workspace.create!(:workspace_name=> "Colonial Cities", :user => user3.email, :tags => "Classes", :notes => "Colonial Cities of the Americas", :user_id => user3.id)
+workspace6 = Workspace.create!(:workspace_name=> "UI Design", :user => user2.email, :tags => "Classes", :notes => "User Interface Design", :user_id => user2.id)
 
-# Link.create(:workspace_name => workspace1.workspace_name, :link => 'https://tesla.com/', :workspace_id => workspace1.id)
+collaboration1 = Collaboration.create!(:user_id => user1.id, :workspace_id => workspace1.id, :role => "Primary Project Owner")
+collaboration2 = Collaboration.create!(:user_id => user2.id, :workspace_id => workspace2.id, :role => "Primary Project Owner")
+collaboration3 = Collaboration.create!(:user_id => user3.id, :workspace_id => workspace3.id, :role => "Primary Project Owner")
+collaboration4 = Collaboration.create!(:user_id => user2.id, :workspace_id => workspace4.id, :role => "Primary Project Owner")
+collaboration5 = Collaboration.create!(:user_id => user3.id, :workspace_id => workspace5.id, :role => "Primary Project Owner")
+collaboration6 = Collaboration.create!(:user_id => user2.id, :workspace_id => workspace6.id, :role => "Primary Project Owner")
+collaboration7 = Collaboration.create!(:user_id => user2.id, :workspace_id => workspace1.id, :role => "Update and View")
+collaboration8 = Collaboration.create!(:user_id => user1.id, :workspace_id => workspace2.id, :role => "Update and View")
 
-# Link.create(:workspace_name => workspace2.workspace_name, :link => 'https://facebook.com/', :workspace_id => workspace2.id)
-# Link.create(:workspace_name => workspace2.workspace_name, :link => 'https://meta.com/', :workspace_id => workspace2.id)
+Link.create!(:workspace_name => workspace1.workspace_name, :link => 'https://tesla.com/', :workspace_id => workspace1.id)
 
-# Link.create(:workspace_name => workspace3.workspace_name, :link => 'https://messenger.com/', :workspace_id => workspace3.id)
-# Link.create(:workspace_name => workspace3.workspace_name, :link => 'https://gmail.com/', :workspace_id => workspace3.id)
+Link.create(:workspace_name => workspace2.workspace_name, :link => 'https://facebook.com/', :workspace_id => workspace2.id)
+Link.create(:workspace_name => workspace2.workspace_name, :link => 'https://meta.com/', :workspace_id => workspace2.id)
 
-# Link.create(:workspace_name => workspace4.workspace_name, :link => 'https://calendar.google.com/', :workspace_id => workspace4.id)
+Link.create(:workspace_name => workspace3.workspace_name, :link => 'https://messenger.com/', :workspace_id => workspace3.id)
+Link.create(:workspace_name => workspace3.workspace_name, :link => 'https://gmail.com/', :workspace_id => workspace3.id)
 
-# Link.create(:workspace_name => workspace5.workspace_name, :link => 'https://maps.google.com/', :workspace_id => workspace5.id)
-# Link.create(:workspace_name => workspace5.workspace_name, :link => 'http://coursera.org/', :workspace_id => workspace5.id)
+Link.create(:workspace_name => workspace4.workspace_name, :link => 'https://calendar.google.com/', :workspace_id => workspace4.id)
 
-# Collaborator.create!(:user_id => user1.id, :workspace_id => workspace1.id, :collaborator_name => user2.username, :owner_name => user1.username)
-# Collaborator.create!(:user_id => user1.id, :workspace_id => workspace1.id, :collaborator_name => user3.username, :owner_name => user1.username)
+Link.create(:workspace_name => workspace5.workspace_name, :link => 'https://maps.google.com/', :workspace_id => workspace5.id)
+Link.create(:workspace_name => workspace5.workspace_name, :link => 'http://coursera.org/', :workspace_id => workspace5.id)
 
-# Collaborator.create!(:user_id => user3.id, :workspace_id => workspace3.id, :collaborator_name => user4.username, :owner_name => user3.username)
