@@ -1,7 +1,7 @@
 # README
 
 ## Overview of tab 
-**tab** is a workspace, flow tracking and optimization application. **tab** allows users to create and manage workspaces, automate setting up a working environment, take notes for workspaces and collaborate on workspaces with others.<br />
+**tab** is a workspace, flow tracking and optimization application. **tab** allows users to create and manage workspaces, automate setting up a working environment, take notes and collaborate on workspaces with others.<br />
 
 **tab** provides:
 - Unlimited workspace storage and optimization
@@ -47,12 +47,14 @@
 - Database expansion: collaboration table
 - Expansion of user-friendliness: improvement to front-end UI/UX
 
+
 **Link to Github repo**: https://github.com/nm3076/saas-tab.git <br />
 **The Relevant Branch is**: proj-launch <br />
-**Heroku link**: https://secure-mesa-61460.herokuapp.com/
+**Heroku link**: https://secure-mesa-61460.herokuapp.com/ <br />
+**Link to Project Demo video**: https://www.youtube.com/watch?v=J23djb0s-j4 
 
 
-### Notes (updated as of Iteration 2)
+### Notes (updated as of Project Launch)
 #### On running the program
 - Please disable any ad blockers on your web browser/alternatively whitelist the root host before clicking on `Open All` in the specific workspace to open all associated links
 - Please enter valid links that start with `https://www.`, `http://www.`, `http://`, or `https://` when adding new links (`Open All` only opens valid links to the browser)
