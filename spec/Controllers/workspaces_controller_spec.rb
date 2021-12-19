@@ -45,8 +45,6 @@ RSpec.describe WorkspacesController, type: :controller do
       end
     end
 
-
-
     # test create workspace
     describe "create workspace" do
       it "creates workspace successfully and redirects to workspaces_path" do

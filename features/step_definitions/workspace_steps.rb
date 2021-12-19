@@ -36,7 +36,7 @@ When /^the user submits valid signin information$/ do
 end
 
 Then /^they should see their profile page$/ do
-  page.should have_selector('h2', text: @user.first_name)
+  page.should have_selector('h1', text: @user.username)
 end
 
 Then /^they should see a signout link$/ do

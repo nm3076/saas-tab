@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+    include SessionsHelper
 
     # test get new user 
     describe "GET new user" do
@@ -32,6 +33,17 @@ RSpec.describe UsersController, type: :controller do
           # send post request to create already existing user
           post :create, params: {:user => {:username => "rl2912", :email => "rl2912@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar"}}
           expect(response).to render_template("new")
+        end
+
+        it "Reroutes to route path if user logged in and tries to create new user" do
+          # create new user before testing create path
+          new_user = User.create!(:username => "rl2912", :email => "rl2912@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar")
+          log_in new_user
+          # send post request to create already existing user
+          #post :create, params: {:user => {:username => "rl2912", :email => "rl2912@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar"}}
+          get :new
+          expect(response).to redirect_to root_path
+          User.find_by(:username  => new_user.username).destroy
         end
     end
 
@@ -69,5 +81,23 @@ RSpec.describe UsersController, type: :controller do
         end
     end
 
-   
+    # get all users for collabaration
+    describe "get all users except self" do 
+
+      it "lists all users except self" do 
+        @created_user = User.create!(:username => "rl2912", :email => "rl2912@columbia.edu", :first_name => "Richard", :last_name => "Lopez", password: "foobar", password_confirmation: "foobar")
+        
+        users = User.all_except @created_user.id
+        correct = true
+        users.each do |user| 
+          if user.username.include? @created_user.username
+            correct = false
+          end
+        end
+
+        expect(correct).to be true 
+        
+        User.find_by(:username  => @created_user.username).destroy
+      end
+    end   
 end
