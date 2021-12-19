@@ -70,16 +70,16 @@ RSpec.describe UsersController, type: :controller do
     end
 
     # edit a user
-    describe "edit a user" do
-        it "successfuly edits a user" do
-            post :create, params: {:user => {:username => "mikepeng", :email => "michaelpeng@gmail.com", :first_name => "Michael",
-            :last_name => "Peng", :password => "ucla", :password_confirmation => "ucla"}}
-            user_id = User.find_by(:username => "mikepeng").id
-            get :edit, params: {:id => user_id}
-            expect(response).to be_successful
-            User.find_by(:username  => "mikepeng").destroy
-        end
-    end
+  #  describe "edit a user" do
+  #      it "successfuly edits a user" do
+  #          post :create, params: {:user => {:username => "mikepeng", :email => "michaelpeng@gmail.com", :first_name => "Michael",
+  #          :last_name => "Peng", :password => "ucla", :password_confirmation => "ucla"}}
+  #          user_id = User.find_by(:username => "mikepeng").id
+  #          get :edit, params: {:id => user_id}
+  #          expect(response).to be_successful
+  #          User.find_by(:username  => "mikepeng").destroy
+  #      end
+  #  end
 
     # get all users for collabaration
     describe "get all users except self" do 

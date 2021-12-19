@@ -1,11 +1,12 @@
 <div class="row">
     <div class="col-sm">
-        <div class="card">
-            <div class="card-body">
-
-                <h1><%= @curr_user.username %>'s Workspaces and Collaborations</h1>
-                <%= link_to "Create A New Workspace", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %><br>
-
+        <div class="card">   
+        <div class="card-header">
+            <h1><%= @curr_user.username %>'s Workspaces and Collaborations</h1>
+        </div>
+            <div class="card-body"> 
+                <%= link_to "Create A New Workspace", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %>
+                <%= link_to 'Share A Workspace', new_collaboration_path, 'data-method' => 'get', :class => "btn btn-outline-primary" %><br>
 
     <%= form_tag workspaces_path, method: :get do %>
       Tags:
@@ -20,7 +21,13 @@
 
     <div class="row workspace-container">
       <% @workspaces.each do |workspace| %>
-          <div class="workspace"> <h6><%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %></h6> </div>
+          <div class="workspace">
+            <h6>
+                [<%= workspace.tags %>]
+                </br>
+                <%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %>
+            </h6> 
+          </div>
       <% end %>
 
             </div>
@@ -30,56 +37,20 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-4">
-        <div class="card">
-
-            <div class="card-header">
-                <h3> Workspaces I Own </h3>
-            </div>
-
-            <div class="card-body">
-
-            <% current_user.workspaces.primary_or_owner.each do |workspace| %>
-                <div class="workspace"> <%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %> </div>
-            <% end %>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-sm-4">
         <div class="card">
             
             <div class="card-header">
-                <h3> Workspaces I Can Update </h3>
+                <h3> Workspaces Shared With Me </h3>
             </div>
 
             <div class="card-body">
 
-                <% current_user.workspaces.update_and_view.each do |p| %>
+                <% current_user.workspaces.update_and_view_or_owner.each do |p| %>
                     <ul>
                     <%= render "workspace_link", {p: p} %> 
                     </ul>
                 <% end %>
             </div>
         </div>
-    </div>
 
-    <div class="col-sm-4">
-        <div class="card">
-        
-            <div class="card-header">
-                <h3> Workspaces I Can View </h3>
-            </div>
-
-            <div class="card-body">
-
-                <% current_user.workspaces.view_only.each do |p| %>
-                    <ul>
-                    <%= render "workspace_link", {p: p} %> 
-                    </ul>
-                <% end %>
-            </div>
-        </div>
-    </div>
 </div>  

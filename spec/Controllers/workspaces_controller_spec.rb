@@ -44,12 +44,14 @@ RSpec.describe WorkspacesController, type: :controller do
 
         Workspace.find_by(:workspace_name => "Genes").destroy
       end 
+
+      it "render tags based on params" do
+        get :index, params: { :tags => {"school": 1} }
+        expect(response).to render_template("index")
+      end
     end
 
-    it "render tags based on params" do
-      get :index, params: { :tags => {"school": 1} }
-      expect(response).to render_template("index")
-    end
+
 
     #test get new view
     describe "GET #new" do
@@ -110,6 +112,11 @@ RSpec.describe WorkspacesController, type: :controller do
         expect(response).to render_template("show")
         Workspace.find_by(:workspace_name => "PLT").destroy
       end
+
+      it "Prevents showing workspace not owned by user" do
+        get :show, params: {:id => 1}
+        expect(response).to redirect_to root_path
+      end 
 
     end
 
@@ -225,29 +232,29 @@ RSpec.describe WorkspacesController, type: :controller do
       end
     end
 
-    # test application job
-    describe "testing instance of appliation job class" do
-      it "is class created for application job" do
-        job = ApplicationJob.new 
-        expect(job).to be_instance_of(ApplicationJob)
-      end
-    end
+#    # test application job
+#    describe "testing instance of appliation job class" do
+#      it "is class created for application job" do
+#        job = ApplicationJob.new 
+#        expect(job).to be_instance_of(ApplicationJob)
+#      end
+#    end
 
-    # test application mailer 
-    describe "testing instance of appliation mailer class" do
-      it "is class created for application mailer" do
-        mailer = ApplicationMailer.new 
-        expect(mailer).to be_instance_of(ApplicationMailer)
-      end
-    end
+#    # test application mailer 
+#    describe "testing instance of appliation mailer class" do
+#      it "is class created for application mailer" do
+#        mailer = ApplicationMailer.new 
+#        expect(mailer).to be_instance_of(ApplicationMailer)
+#      end
+#    end
 
     # Test if link controller is working properly
-    describe "testing instance of appliation job class" do
-      it "is class created for application job" do
-        link_controller = LinksController.new 
-        expect(link_controller).to be_instance_of(LinksController)
-      end
-    end
+#    describe "testing instance of appliation job class" do
+#      it "is class created for application job" do
+#        link_controller = LinksController.new 
+#        expect(link_controller).to be_instance_of(LinksController)
+#      end
+#    end
 
     # Test if collaborator is working properly
     # describe "testing instance of appliation job class" do

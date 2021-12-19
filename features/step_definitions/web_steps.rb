@@ -54,7 +54,7 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
 end
 
 When /^(?:|I |they )follow "([^"]*)"$/ do |link|
-  click_link(link)
+  click_link(link, :match => :first)
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
@@ -82,9 +82,9 @@ When /^(?:|I )fill in the following:$/ do |fields|
    end
 end
 
-# When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
-#   select(value, :from => field)
-# end
+When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select(value, :from => field)
+end
 
 # When /^(?:|I )check "([^"]*)"$/ do |field|
 #   check(field)

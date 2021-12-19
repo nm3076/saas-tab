@@ -21,18 +21,18 @@ class CollaborationsController < ApplicationController
     def edit
     end
 
-    def update
-        if @collaboration.update(collaboration_params)
-            redirect_to workspace_path(@collaboration.workspace)
-        else
-            render :edit
-        end
-    end
+    #def update
+    #    if @collaboration.update(collaboration_params)
+    #        redirect_to workspace_path(@collaboration.workspace)
+    #    else
+    #        render :edit
+    #    end
+    #end
 
-    def destroy
-        @collaboration.delete
-        redirect_to workspace_path(@collaboration.workspace)
-    end
+    # def destroy
+    #     @collaboration.delete
+    #     redirect_to workspace_path(@collaboration.workspace)
+    # end
 
     private
     
