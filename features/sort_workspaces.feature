@@ -160,13 +160,42 @@ Scenario: Signup page
 Scenario: Deleting links from workspace
   Given a valid user
   When I go to the login page
-  And I fill in "Email" with "nm3076@columbia.edu"
-  And I fill in "Password" with "foobar"
+  And I fill in "Email" with "test@columbia.edu"
+  And I fill in "Password" with "hello"
   And I press "Log in"
   Then I should be on the Dashboard page
-  #And I should see "History Lab"
+  And I should see "Genes"
+  When I follow "Genes"
+  Then I should be on the workspace page for "Genes"
+  And I should see "Delete Link"
+  When I follow "Delete Link"
+  Then I should be on the workspace page for "Genes"
   
   
+Scenario: update links from workspace
+  Given a valid user
+  When I go to the login page
+  And I fill in "Email" with "test@columbia.edu"
+  And I fill in "Password" with "hello"
+  And I press "Log in"
+  Then I should be on the Dashboard page
+  And I should see "Genes"
+  When I follow "Genes"
+  Then I should be on the workspace page for "Genes"
+  Then they should see a text area to update the newly created link
+  When I add details for the links to update
+  And I press "Save changes"
+  Then I should be on the workspace page for "Genes"
 
-
-
+Scenario: open all links from workspace
+  Given a valid user
+  When I go to the login page
+  And I fill in "Email" with "test@columbia.edu"
+  And I fill in "Password" with "hello"
+  And I press "Log in"
+  Then I should be on the Dashboard page
+  And I should see "Genes"
+  When I follow "Genes"
+  Then I should be on the workspace page for "Genes"
+  And I press "Open All"
+  Then I should be on the workspace page for "Genes"

@@ -56,8 +56,9 @@ Given /^a valid user$/ do
              :password_confirmation => "hello"
            })
 
-  workspace1 = Workspace.create(:workspace_name=> "Genes", :user => @user.email, :tags => "Classes", :notes => "test", :user_id => @user.id)
-  Link.create(:workspace_name => workspace1.workspace_name, :link => 'https://tesla.com/', :workspace_id => workspace1.id)
+  workspace1 = Workspace.create!(:workspace_name=> "Genes", :user => @user.email, :tags => "Classes", :notes => "test", :user_id => @user.id)
+  collaboration1 = Collaboration.create!(:user_id => @user.id, :workspace_id => workspace1.id, :role => "Primary Project Owner")
+  Link.create!(:workspace_name => workspace1.workspace_name, :link => 'https://tesla.com/', :nickname => "Coolg" ,:workspace_id => workspace1.id)
 
 end
 
@@ -79,23 +80,28 @@ end
 
 Given /the following users exist/ do |users_table|
   users_table.hashes.each do |user|
-    User.create user
+    User.create!(user)
   end
 end
 
 Given /the following workspaces exist/ do |workspaces_table|
   workspaces_table.hashes.each do |workspace|
-    Workspace.create workspace
+    Workspace.create!(workspace)
   end
 end
 
 Given /the following links exist/ do |links_table|
   links_table.hashes.each do |link|
-    Link.create link
+    Link.create!(link)
   end
-
-
 end
+
+Given /the following collaborations exist/ do |collab_table|
+  collab_table.hashes.each do |col|
+    Collaboration.create!(col)
+  end 
+end
+
 
 Then /I should see all the workspaces/ do
   # Make sure that all the movies in the app are visible in the table
@@ -120,9 +126,9 @@ Then /^they should see a text area to update the newly created link$/ do
   page.should have_selector('input')
 end
 
-When /^I add details for the newly created link$/ do
-  
-  fill_in "Link-Input", with: "https://www.tesla.com/"
+When /^I add details for the links to update$/ do
+  page.find('input', :match => :first).fill_in with: "whacky"
+  #fill_in "Link-Input", with: "https://www.tesla.com/"
   #fill_in "Notes-Input", with: "the dream"
 end
 
