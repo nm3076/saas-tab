@@ -4,7 +4,7 @@
             <div class="card-body">
 
                 <h1><%= @curr_user.username %>'s Workspaces and Collaborations</h1>
-                <%= button_to "Create A New Workspace", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %><br>
+                <%= link_to "Create A New Workspace", new_workspace_path, method: "get", :class => "btn btn-outline-primary" %><br>
 
 
     <%= form_tag workspaces_path, method: :get do %>
@@ -20,8 +20,7 @@
 
     <div class="row workspace-container">
       <% @workspaces.each do |workspace| %>
-          <div> Tag: <%= workspace.tags %> </div>
-          <div class="workspace"> <%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %> </div>
+          <div class="workspace"> <h6><%= link_to "#{workspace.workspace_name}", workspace_path(workspace.id) %></h6> </div>
       <% end %>
 
             </div>

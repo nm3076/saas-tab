@@ -59,8 +59,8 @@ Scenario: Login + add workspace
   And I fill in "Password" with "hello"
   And I press "Log in"
   Then I should be on the Dashboard page
-  And I should see "Add new workspace +"
-  When I follow "Add new workspace +"
+  And I should see "Create A New Workspace"
+  When I follow "Create A New Workspace"
   Then I should be on the Create New Workspace page
   And I fill in "Name" with "Travel"
   And I press "Add to Workspaces"
@@ -74,8 +74,8 @@ Scenario: delete specific workspace from database
   And I fill in "Password" with "hello"
   And I press "Log in"
   Then I should be on the Dashboard page
-  And I should see "Add new workspace +"
-  When I follow "Add new workspace +"
+  And I should see "Create A New Workspace"
+  When I follow "Create A New Workspace"
   Then I should be on the Create New Workspace page
   And I fill in "Name" with "Travel"
   And I press "Add to Workspaces"
@@ -93,15 +93,16 @@ Scenario: return to dashboard from specific workspace
   And I fill in "Password" with "hello"
   And I press "Log in"
   Then I should be on the Dashboard page
-  And I should see "Add new workspace +"
-  When I follow "Add new workspace +"
+  And I should see "Create A New Workspace"
+  When I follow "Create A New Workspace"
   Then I should be on the Create New Workspace page
-  And I fill in "Name" with "Travel"
+  And I fill in "Name" with "Winter Break"
+  And I fill in "Tag" with "Travel"
   And I press "Add to Workspaces"
   Then I should be on the Dashboard page
   And I should see "Travel"
-  When I follow "Travel"
-  Then I should be on the workspace page for "Travel"
+  When I follow "Winter Break"
+  Then I should be on the workspace page for "Winter Break"
   When I follow "Back to Dashboard"
   Then I should be on the Dashboard page
 
