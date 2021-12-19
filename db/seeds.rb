@@ -17,6 +17,7 @@ user4 = User.create!(:username => "jp3864", :email => "jp3864@columbia.edu", :fi
 user5 = User.create!(:username => "bs1212", :email => "bs1212@columbia.edu", :first_name => "Bob", :last_name => "Smith", password: "foobar", password_confirmation: "foobar")
 user6 = User.create!(:username => "ms6174", :email => "ms6174@columbia.edu", :first_name => "Mary", :last_name => "Smith", password: "foobar", password_confirmation: "foobar")
 
+
 workspace1 = Workspace.create!(:workspace_name=> "SaaS", :user => user1.email, :tags => "Classes", :notes => "Engineering Software as a Service", :user_id => user1.id)
 workspace2 = Workspace.create!(:workspace_name=> "MBC", :user => user2.email, :tags => "Classes", :notes => "Making, Breaking Codes", :user_id => user2.id)
 workspace3 = Workspace.create!(:workspace_name=> "History Lab", :user => user3.email, :tags => "Research", :notes => "NLP and Computer Vision", :user_id => user3.id)
@@ -45,3 +46,4 @@ Link.create(:workspace_name => workspace4.workspace_name, :link => 'https://cale
 
 Link.create(:workspace_name => workspace5.workspace_name, :link => 'https://maps.google.com/', :workspace_id => workspace5.id)
 Link.create(:workspace_name => workspace5.workspace_name, :link => 'http://coursera.org/', :workspace_id => workspace5.id)
+

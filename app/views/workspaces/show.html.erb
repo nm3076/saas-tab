@@ -2,8 +2,8 @@
 <body>
 <h2 style="color:white;"><%= @workspace.workspace_name %> Workspace</h2>
 <div class="workspace-open-add-container">
-  <button id="click-to-open" style="width:100px" value=<%= @workspace.id %> > Open All </button> 
-  <button id="add-link-to-workspace" style="width:100px" value=<%= @workspace.id %>> Add Link </button>
+  <button id="click-to-open" style="width:100px" value=<%= @workspace.id %> >Open All</button> 
+  <button id="add-link-to-workspace" style="width:100px" value=<%= @workspace.id %>>Add Link</button>
 </div> 
 
 <%= form_tag workspace_path, :method => :patch  do %>
@@ -25,7 +25,7 @@
 
           <!-- Name input --> 
           <td>
-            <input class="workspace-input" name="name-<%= l.id %>" value="<%= l.nickname %>" placeholder="Name">
+            <input class="workspace-input" name="name-<%= l.id %>" value="<%= l.nickname %>" placeholder="Name" type="text">
           </td>
 
           <!--Link Input -->
@@ -33,7 +33,7 @@
             <input class="workspace-input" name="link-<%= l.id %>" value="<%= l.link %>" placeholder="Link">
           </td>
 
-          <!--Notes For Link -->
+          <!--Notes Input -->
           <td>
             <input class="workspace-input" name="notes-<%= l.id %>" value="<%= l.notes %>" placeholder="Notes">
           </td>

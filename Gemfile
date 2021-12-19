@@ -27,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
 gem "bootstrap_form", "~> 5.0"
 
+#gem 'poltergeist'
 gem 'rails-controller-testing'
 gem 'devise'
 gem 'devise-token_authenticatable'

@@ -106,4 +106,67 @@ Scenario: return to dashboard from specific workspace
   When I follow "Back to Dashboard"
   Then I should be on the Dashboard page
 
+Scenario: update specific workspace from database
+  Given a valid user
+  When I go to the login page
+  And I fill in "Email" with "test@columbia.edu"
+  And I fill in "Password" with "hello"
+  And I press "Log in"
+  Then I should be on the Dashboard page
+  And I should see "Create A New Workspace"
+  When I follow "Create A New Workspace"
+  Then I should be on the Create New Workspace page
+  And I fill in "Name" with "Travel"
+  And I press "Add to Workspaces"
+  Then I should be on the Dashboard page
+  And I should see "Travel"
+  When I follow "Travel"
+  Then I should be on the workspace page for "Travel"
+  When I press "Add Link"
+  Then they should see a text area to update the newly created link
+  And I press "Save changes"
+  Then I should be on the workspace page for "Travel"
+
+Scenario: Login + add workspace
+  Given a valid user
+  When I go to the login page
+  And I fill in "Email" with "test@columbia.edu"
+  And I fill in "Password" with "hello"
+  And I press "Log in"
+  Then I should be on the Dashboard page
+  And I should see "Create A New Workspace"
+  When I follow "Create A New Workspace"
+  Then I should be on the Create New Workspace page
+  And I fill in "Name" with "Travel"
+  And I press "Add to Workspaces"
+  Then I should be on the Dashboard page
+  When I follow "Profile"
+  And I should see "Travel"
+  Given a user visits the signup page
+  Then I should be on the Dashboard page
+  
+Scenario: Signup page 
+  Given I visit the signup page
+  And I fill in "First name" with "richard"
+  And I fill in "Last name" with "lopez"
+  And I fill in "Email" with "rl3020@columbia.edu"
+  And I fill in "Username" with "rl3020"
+  And I fill in "Password" with "foobar"
+  And I fill in "Confirmation" with "foobar"
+  And I press "Create Account"
+  Then I should be on the Dashboard page
+  And I should see "Create A New Workspace"
+
+Scenario: Deleting links from workspace
+  Given a valid user
+  When I go to the login page
+  And I fill in "Email" with "nm3076@columbia.edu"
+  And I fill in "Password" with "foobar"
+  And I press "Log in"
+  Then I should be on the Dashboard page
+  #And I should see "History Lab"
+  
+  
+
+
 
