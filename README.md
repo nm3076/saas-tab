@@ -64,7 +64,7 @@
 
 ## Running the program locally
 0.  `bundle install` (installs necesarry gems, etc.)
-1.  `rails webpacker:install` (not currently included in gemfile due to environment discrepancies - will be rectified) 
+1.  `rails webpacker:install` (optional, only if needed) 
 2.  `rails db:drop` (optional, only if needed to destroy database first)
 3.  `rails db:create db:migrate db:seed` (create, migrate, and seed the database)
 4.  `rails server` (launch web server locally)
