@@ -232,21 +232,21 @@ RSpec.describe WorkspacesController, type: :controller do
       end
     end
 
-#    # test application job
-#    describe "testing instance of appliation job class" do
-#      it "is class created for application job" do
-#        job = ApplicationJob.new 
-#        expect(job).to be_instance_of(ApplicationJob)
-#      end
-#    end
+   # test application job
+   describe "testing instance of appliation job class" do
+     it "is class created for application job" do
+       job = ApplicationJob.new 
+       expect(job).to be_instance_of(ApplicationJob)
+     end
+   end
 
-#    # test application mailer 
-#    describe "testing instance of appliation mailer class" do
-#      it "is class created for application mailer" do
-#        mailer = ApplicationMailer.new 
-#        expect(mailer).to be_instance_of(ApplicationMailer)
-#      end
-#    end
+   # test application mailer 
+   describe "testing instance of appliation mailer class" do
+     it "is class created for application mailer" do
+       mailer = ApplicationMailer.new 
+       expect(mailer).to be_instance_of(ApplicationMailer)
+     end
+   end
 
     # Test if link controller is working properly
 #    describe "testing instance of appliation job class" do
