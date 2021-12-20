@@ -51,9 +51,10 @@ RSpec.describe CollaborationsController, type: :controller do
             @workspace = Workspace.create(:workspace_name=> "SaaSS", :user => "rl3020@columbia.edu", :tags => "Classes", :notes => "Engineering Software as a Service", :user_id => @current_user_logged_in.id)
             post :create, params: {:collaboration => {:user_id => @current_user_logged_in.id, :workspace_id => @workspace.id}}
             @other_user = user = User.create!(:username => "jp1234", :email => "jp@columbia.edu", :first_name => "jessica", :last_name => "peng", password: "hello", password_confirmation: "hello")
-            post :create, params: {:collaboration => {:user_id => @other_user.id, :workspace_id => @workspace.id, :role => "View Only"}}
+            post :create, params: {:collaboration => {:user_id => @other_user.id, :workspace_id => @workspace.id, :role => "Project Owner"}}
             Kernel.puts response.body
             expect(response).to redirect_to workspace_path(:id => @workspace.id)
+         #   expect(response).to be_successful
             @workspace.destroy
             @other_user.destroy
             
@@ -94,14 +95,14 @@ RSpec.describe CollaborationsController, type: :controller do
             @workspace = Workspace.create(:workspace_name=> "SaaSS", :user => "rl3020@columbia.edu", :tags => "Classes", :notes => "Engineering Software as a Service", :user_id => @current_user_logged_in.id)
             post :create, params: {:collaboration => {:user_id => @current_user_logged_in.id, :workspace_id => @workspace.id, :role => "Project Owner"}}
             @other_user = user = User.create!(:username => "jp1234", :email => "jp@columbia.edu", :first_name => "jessica", :last_name => "peng", password: "hello", password_confirmation: "hello")
-            @collab = Collaboration.create!(:user_id => @other_user.id, :workspace_id => @workspace.id, :role => "View Only")
+            @collab = Collaboration.create!(:user_id => @other_user.id, :workspace_id => @workspace.id, :role => "Project Owner")
             @primary_owner = @current_user_logged_in.workspaces.primary_owner
             @owner = @current_user_logged_in.workspaces.owner
-            @primary_or_owner_or_update= @current_user_logged_in.workspaces.primary_or_owner_or_update
-            @collaborator_of_any_kind = @current_user_logged_in.workspaces.collaborator_of_any_kind
-            @update_and_view = @current_user_logged_in.workspaces.update_and_view
-            @view_only = @current_user_logged_in.workspaces.view_only
-            @primary_or_owner= @current_user_logged_in.workspaces.primary_or_owner
+          #  @primary_or_owner_or_update= @current_user_logged_in.workspaces.primary_or_owner_or_update
+            # @collaborator_of_any_kind = @current_user_logged_in.workspaces.collaborator_of_any_kind
+            # @update_and_view = @current_user_logged_in.workspaces.update_and_view
+            # @view_only = @current_user_logged_in.workspaces.view_only
+            # @primary_or_owner= @current_user_logged_in.workspaces.primary_or_owner
 
             @workspace.destroy
             @other_user.destroy
