@@ -43,9 +43,12 @@
     - Users select a role for other users when creating a collaboration: "Project Owner" or "Update and View"
         - Users with "Project Owner" access can edit the workspace and share the workspace with other users
         - Users with "Update and View" access can only edit the workspace
+        - Users are automatically made the "Primary Project Owner" when creating a workspace
     - Updated dashboard for "Workspaces Shared With Me" to include workspaces that have been shared with the user
+    - Users can make changes to a workspace and these are reflected for the collaborators of that workspace
 - Database expansion: collaboration table
 - Expansion of user-friendliness: improvement to front-end UI/UX
+- Validation checks: expanded for log-in checks and to ensure roles are checked when users access workspaces
 
 **Link to Github repo**: https://github.com/nm3076/saas-tab.git <br />
 **The Relevant Branch is**: proj-launch <br />
@@ -57,11 +60,11 @@
 #### On running the program
 - Please disable any ad blockers on your web browser/alternatively whitelist the root host before clicking on `Open All` in the specific workspace to open all associated links
 - Please enter valid links that start with `https://www.`, `http://www.`, `http://`, or `https://` when adding new links (`Open All` only opens valid links to the browser)
-#### On testing the program
+#### On testing the programs
 - The RSpec and Cucumber tests cover all models, views, and controllers
-- Our joint results currently yield [XX.XX%] coverage.
+- Our joint results currently yield [94.6%] coverage.
 #### On test results
-- Joint RSpec and Cucumber coverage locally yields [XX.XX%]. However, when deploying to heroku, there was an error to "define constant ApplicationCable::Connection, but didnt". In order to fix this, we uncommented the code in the `app/channels/application_cable/*` files. These two classes under this module `application_cable` are unused, but were left in for heroku deployment purposes.
+- Joint RSpec and Cucumber coverage locally yields [98.1%]. However, when deploying to heroku, there was an error to "define constant ApplicationCable::Connection, but didnt". In order to fix this, we uncommented the code in the `app/channels/application_cable/*`, `app/jobs/*`, `app/mailers/*`  files. These are unused, but were left in for heroku deployment purposes. We have accounted for the mailers and the jobs in our RSpec tests.
 
 ## Running the program locally
 0.  `bundle install` (installs necesarry gems, etc.)
